@@ -15,28 +15,11 @@ The second part of the lab will focus on these topics:
 - Create a prompt based on the previous answer and pass to the LLM
 
 ## 0 Setup
+Unlike the original, I am changing this to work with the "OpenShift on POWER10 - Bastion, 1 Master with NFS Storage" environment which IBMers and IBM Business Partners can reserve from Techzone. 
 
->***Note:** <br>It might be helpful to open this lab guide inside the VM in a seperate firefox browser tab for copy & paste code blocks.*
+Only IBMers and IBM Business Partners can access Techzone, so the link won't work for anyone else. For IBMers and BPs, access the collection on Techzone here: https://techzone.ibm.com/collection/on-premises-redhat-openshift-on-power-and-ibm-z-offerings/environments
 
-You'll be using the IBM Montpellier RADAR environment which is an dedicated OpenShift cluster. 
-
-You'll be provided with a workstation that has access to the RADAR environment by using OpenVPN.
-
-Once you enter the VM right-click on the OpenVPN icon in the taskbar and then choose **connect** to enter the provided credentials.
-
-In Barcelona you will be using the user **bcnllama_20240126_XX** where XX is your Student Number (01-20).
-
-![image](images/0-vpn.png) ![image](images/0-connect.png) 
-
-Once you're connected you can find a quicklink icon **OCP Cadiz Console** on the desktop that opens the OpenShift webconsole where you have to login using **htpasswd** using the provided credentials.
-
-![image](images/0-login.png)
-
-Once you're logged in you'll find yourself in the **Developer** perspective and see a prepared project corresponding to your username that has a Snapshot / PVC where the Large Language model artifact is already downloaded for your convenience.
-
-![image](images/0-project.png)
-
-Click on that project to make it the default.
+You will need to reserve the environment, and wait for the deployment to complete and the environment to be ready.
 
 ## Part 1: Deploy Large Language Model
 
@@ -69,7 +52,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: san
   resources:
     requests:
       storage: 10Gi
@@ -117,11 +99,9 @@ spec:
                 echo "model /models/tinyllama-1.1b-chat-v1.0.Q8_0.gguf already present"
               fi
           resources: {}
-      nodeSelector:
-        feature.node.kubernetes.io/cpu-cpuid.MMA: "true"
       containers:
         - name: llama-cpp
-          image: quay.io/mgiessing/llama-cpp-server:latest
+          image: quay.io/mgiessing/llama-cpp-server:master-b2921-3-gd233b507
           args: ["-m", "/models/tinyllama-1.1b-chat-v1.0.Q8_0.gguf", "-c", "4096", "-b", "32"]
           ports:
             - containerPort: 8080
