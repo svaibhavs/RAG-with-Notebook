@@ -25,6 +25,10 @@ You will need to reserve the environment, and wait for the deployment to complet
 
 ![image](images/OCP-on-Power10.png)
 
+When the environment has been provisioned and is ready, click the "here" link to access the details you will need:
+
+![image]
+
 ## Part 1: Deploy Large Language Model
 
 Now you're going to create several resources using the WebUI.
