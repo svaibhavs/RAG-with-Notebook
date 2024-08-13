@@ -19,7 +19,7 @@ Unlike the original, I am changing this to work with the "OpenShift on POWER10 -
 
 Only IBMers and IBM Business Partners can access Techzone, so the link won't work for anyone else. For IBMers and BPs, access the collection on Techzone here: https://techzone.ibm.com/collection/on-premises-redhat-openshift-on-power-and-ibm-z-offerings/environments
 
-![image](images/Techzone OCP Offering Environments.png)
+![image](images/Techzone-OCP-Offering-Environments.png)
 
 You will need to reserve the environment, and wait for the deployment to complete and the environment to be ready.
 
