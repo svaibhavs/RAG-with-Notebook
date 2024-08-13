@@ -23,6 +23,8 @@ Only IBMers and IBM Business Partners can access Techzone, so the link won't wor
 
 You will need to reserve the environment, and wait for the deployment to complete and the environment to be ready.
 
+![image](images/OCP-on-Power10.png)
+
 ## Part 1: Deploy Large Language Model
 
 Now you're going to create several resources using the WebUI.
