@@ -27,7 +27,7 @@ You will need to reserve the environment, and wait for the deployment to complet
 
 When the environment has been provisioned and is ready, click the "here" link to access the details you will need:
 
-![image]
+![image](images/Techzone-reservation-ready.png)
 
 ## Part 1: Deploy Large Language Model
 
