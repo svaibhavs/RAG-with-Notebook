@@ -51,6 +51,10 @@ Now you're going to create several resources using the WebUI.
 
 ### Option A: Using the OpenShift web console
 
+### 1.0 Project
+
+You will need to create a Project to hold our resources (to be added...)
+
 ### 1.1 Snapshot / PVC
 
 In the **Administrator** view go to:
