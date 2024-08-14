@@ -297,7 +297,8 @@ Clone the repository using Github Desktop or use the terminal:
 
 ```bash
 # Get the lab repository
-git clone https://github.com/mgiessing/bcn-lab-2084 && cd bcn-lab-2084
+git clone https://github.com/mgiessing/bcn-lab-2084
+cd bcn-lab-2084
 ```
 
 Now you're going to create the milvus deployment:
@@ -340,7 +341,7 @@ Once the container is deployed you should be able to access it using the link fr
 
 The URL should look like this:
 
-http://cpu-notebook-llamaXX.apps.cadiz.edu.ihost.com (where XX is your user/number)
+http://cpu-notebook-llm-on-techzone.apps.pXXXX.cecc.ihost.com/ (with the XXXX changing for your reserved environment)
 
 If you open the notebook server in your browser now drag & drop the notebook (`RAG.ipynb`) from this repo into the notebook server.
 
