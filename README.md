@@ -29,6 +29,10 @@ When the environment has been provisioned and is ready, click the "here" link to
 
 ![image](images/Techzone-reservation-ready.png)
 
+Behind that link, you will have a page headed like this:
+
+![image](images/OCP-on-Power10-Reservation-Ready.png)
+
 ## Part 1: Deploy Large Language Model
 
 Now you're going to create several resources using the WebUI.
