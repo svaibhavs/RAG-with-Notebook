@@ -41,6 +41,10 @@ Click "htpasswd" to log into the OCP console:
 
 ![image](images/OCP-Console.png)
 
+Log in with the user of "cecuser" and the password you copied earlier:
+
+![image](images/OCP-Console-Login.png)
+
 ## Part 1: Deploy Large Language Model
 
 Now you're going to create several resources using the WebUI.
