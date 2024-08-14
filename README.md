@@ -37,6 +37,10 @@ Lower in that page you can see the Reservation Details, with the link to the OCP
 
 ![image](images/Reservation-Details.png)
 
+Click "htpasswd" to log into the OCP console:
+
+![image](images/OCP-Console.png)
+
 ## Part 1: Deploy Large Language Model
 
 Now you're going to create several resources using the WebUI.
