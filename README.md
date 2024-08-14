@@ -33,6 +33,10 @@ Behind that link, you will have a page headed like this:
 
 ![image](images/OCP-on-Power10-Reservation-Ready.png)
 
+Lower in that page you can see the Reservation Details, with the link to the OCP Console, your user name of "cecuser" and the obscured password. Copy the password with the provided button, and click the link to access the OCP console:
+
+![image](images/Reservation-Details.png)
+
 ## Part 1: Deploy Large Language Model
 
 Now you're going to create several resources using the WebUI.
