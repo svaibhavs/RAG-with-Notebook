@@ -4,8 +4,6 @@ from langchain.vectorstores import Milvus
 from langchain.document_loaders import WebBaseLoader, PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from flask import Flask, request
-from quickcsv.file import *
-import json
 import os
 
 app = Flask(__name__)
