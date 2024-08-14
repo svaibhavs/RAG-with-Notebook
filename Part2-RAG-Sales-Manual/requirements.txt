@@ -1,5 +1,3 @@
 gunicorn
 Flask
-scipy-openblas64
-pymilvus
 langchain
