@@ -1,3 +1,4 @@
 gunicorn
 Flask
 langchain
+pymilvus==2.3.7
