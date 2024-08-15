@@ -1,5 +1,5 @@
 gunicorn
 Flask
 langchain
-scipy-openblas64
+libopenblas-dev
 pymilvus
