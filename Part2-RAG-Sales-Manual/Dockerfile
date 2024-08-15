@@ -4,11 +4,14 @@ FROM python
 WORKDIR /api-flask
 
 # Copy the necessary files and directories into the container
-COPY app.py requirements.txt /api-flask/
+# COPY app.py requirements.txt /api-flask/
+COPY app.py /api-flask
 
 # Upgrade pip and install Python dependencies
-RUN pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt
+#RUN pip3 install --upgrade pip
+#RUN pip3 install -r requirements.txt
+
+conda install conda-forge::pymilvus
 
 # Expose port 5000 for the Flask application
 EXPOSE 5000
