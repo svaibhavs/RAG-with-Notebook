@@ -9,6 +9,7 @@ COPY app.py /api-flask
 
 # Upgrade pip and install Python dependencies
 RUN pip3 install --upgrade pip
+RUN pip3 install scipy-openblas64
 RUN pip3 install pymilvus
 # Expose port 5000 for the Flask application
 EXPOSE 5000
