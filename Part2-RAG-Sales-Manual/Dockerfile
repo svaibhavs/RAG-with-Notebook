@@ -8,7 +8,7 @@ COPY app.py requirements.txt /api-flask/
 
 # Upgrade pip and install Python dependencies
 RUN pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt --extra-index-url https://repo.fury.io/mgiessing --prefer-binary
+RUN pip3 install -r requirements.txt
 
 # Expose port 5000 for the Flask application
 EXPOSE 5000
