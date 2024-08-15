@@ -4,8 +4,7 @@ FROM python
 WORKDIR /api-flask
 
 # Copy the necessary files and directories into the container
-COPY resources/ static/ util/ app.py requirements.txt /api-flask/
-COPY resources/ /api-flask/resources/
+COPY static/ util/ app.py requirements.txt /api-flask/
 COPY static/ /api-flask/static/
 COPY util/ /api-flask/util/
 COPY app.py requirements.txt  /api-flask/
