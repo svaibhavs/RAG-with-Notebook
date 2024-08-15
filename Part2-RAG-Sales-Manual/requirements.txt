@@ -3,4 +3,4 @@ Flask
 langchain
 rust-pypi
 cargo
-pymilvus==2.3.8
+pymilvus
