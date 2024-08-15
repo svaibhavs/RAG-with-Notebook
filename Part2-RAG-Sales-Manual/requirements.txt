@@ -1,5 +1,6 @@
 gunicorn
 Flask
 langchain
-rust
+rust-pypi
+cargo
 pymilvus==2.3.8
