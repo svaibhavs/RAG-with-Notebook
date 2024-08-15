@@ -8,11 +8,8 @@ WORKDIR /api-flask
 COPY app.py /api-flask
 
 # Upgrade pip and install Python dependencies
-#RUN pip3 install --upgrade pip
-#RUN pip3 install -r requirements.txt
-
-RUN conda install conda-forge::pymilvus
-
+RUN pip3 install --upgrade pip
+RUN pip3 install pymilvus
 # Expose port 5000 for the Flask application
 EXPOSE 5000
 
