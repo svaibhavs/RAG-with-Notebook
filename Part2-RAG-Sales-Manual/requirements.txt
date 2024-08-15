@@ -1,6 +1,5 @@
 gunicorn
 Flask
 langchain
-rust-pypi
-cargo
+pythran-openblas
 pymilvus
