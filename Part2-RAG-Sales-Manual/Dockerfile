@@ -4,10 +4,7 @@ FROM python
 WORKDIR /api-flask
 
 # Copy the necessary files and directories into the container
-COPY static/ util/ app.py requirements.txt /api-flask/
-COPY static/ /api-flask/static/
-COPY util/ /api-flask/util/
-COPY app.py requirements.txt  /api-flask/
+COPY app.py requirements.txt /api-flask/
 
 # Upgrade pip and install Python dependencies
 RUN pip3 install --upgrade pip
