@@ -20,10 +20,7 @@ def index():
         MILVUS_HOST="milvus-service"
         MILVUS_PORT="19530"
 
-        LLAMA_HOST="llama-service"
-        LLAMA_PORT="8080"
-
-        connections.connect(host="milvus-service", port="19530")
+        connections.connect(host=MILVUS_HOST, port=MILVUS_PORT)
         
         FNAME = Server_Name+".pdf"
         
