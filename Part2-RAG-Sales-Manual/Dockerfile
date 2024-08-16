@@ -4,12 +4,12 @@ FROM python:3.10
 WORKDIR /api-flask
 
 # Copy the necessary files and directories into the container
-# COPY app.py requirements.txt /api-flask/
-COPY app.py /api-flask
+COPY app.py requirements.txt /api-flask/
 
 # Upgrade pip and install Python dependencies
 RUN pip3 install --upgrade pip
 RUN pip3 install pymilvus --extra-index-url https://repo.fury.io/mgiessing --prefer-binary
+RUN pip3 install -r requirements.txt
 # Expose port 5000 for the Flask application
 EXPOSE 5000
 
