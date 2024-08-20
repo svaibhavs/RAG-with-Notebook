@@ -23,7 +23,12 @@ def index():
 
         connections.connect(host=MILVUS_HOST, port=MILVUS_PORT)
         app.logger.info('Connected to Milvus Host '+MILVUS_HOST)
-        
+
+        vector_store = Milvus(
+            collection_name="sales_manuals",
+            connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT}
+        )
+
         FNAME = Server_Name+".pdf"
 
         questions = ["How many dual-chip processor modules in the server?", "How Power10 processors in the server?", "What speed in GHz are the processors in the server?"]
