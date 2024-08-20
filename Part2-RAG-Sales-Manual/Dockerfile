@@ -9,8 +9,9 @@ COPY app.py requirements.txt /api-flask/
 # Upgrade pip and install Python dependencies
 #RUN pip3 install --upgrade pip
 RUN pip3 install pymilvus --extra-index-url https://repo.fury.io/mgiessing --prefer-binary
-RUN pip3 install -r requirements.txt
 RUN pip3 install -U langchain-community
+RUN pip3 install -r requirements.txt
+
 # Expose port 8080 for the Flask application
 EXPOSE 8080
 
