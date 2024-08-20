@@ -21,7 +21,7 @@ def index():
     app.logger.info('Connected to Milvus Host '+MILVUS_HOST)
   
     Collections = utility.list_collections()
-    app.logger.info('Found collections', Collections)
+    app.logger.info('Found collections', str(Collections))
         
     content['result'] = Collections   
     return content
