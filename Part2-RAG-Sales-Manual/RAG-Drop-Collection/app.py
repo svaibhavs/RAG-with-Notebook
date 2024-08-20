@@ -16,7 +16,7 @@ def index():
 
     if request.args.get('Collection'):
         Collection = request.args.get('Collection')
-        app.logger.info('Found Collection'+Collection)
+        app.logger.info('Found Collection '+Collection)
         
         MILVUS_HOST="milvus-service"
         MILVUS_PORT="19530"
@@ -24,9 +24,9 @@ def index():
         connections.connect(host=MILVUS_HOST, port=MILVUS_PORT)
         app.logger.info('Connected to Milvus Host '+MILVUS_HOST)
 
-        app.logger.info('Dropping collection'+Collection)
+        app.logger.info('Dropping collection '+Collection)
         utility.drop_collection(Collection)
-        app.logger.info('Dropped collection'+Collection)
+        app.logger.info('Dropped collection '+Collection)
         
         content['result'] = "Success"
     else:
