@@ -9,9 +9,8 @@ COPY IBM_Power_S1012.pdf /api-flask/
 
 # Upgrade pip and install Python dependencies
 #RUN pip3 install --upgrade pip
-RUN pip3 install pymilvus --extra-index-url https://repo.fury.io/mgiessing --prefer-binary
+RUN pip3 install pymilvus sentence-transformers --extra-index-url https://repo.fury.io/mgiessing --prefer-binary
 RUN pip3 install -U langchain-community
-RUN pip3 install sentence-transformers
 RUN pip3 install -r requirements.txt
 
 # Expose port 8080 for the Flask application
