@@ -41,7 +41,7 @@ def index():
         app.logger.info('Text split into '+str(len(docs))+'chunks')
         
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-        app.logger.info('Getting embeddings from'+model_name)
+        app.logger.info('Getting embeddings')
 
         app.logger.info('Beginning vector store')
         vector_store = Milvus.from_documents(
