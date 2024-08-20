@@ -1,4 +1,3 @@
 gunicorn
 Flask
 pypdf
-sentence-transformers
