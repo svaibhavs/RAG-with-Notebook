@@ -1,4 +1,5 @@
 from pymilvus import connections, utility
+from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import Milvus
 from flask import Flask, request
 import os
@@ -25,7 +26,10 @@ def index():
         connections.connect(host=MILVUS_HOST, port=MILVUS_PORT)
         app.logger.info('Connected to Milvus Host '+MILVUS_HOST)
 
+        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
         vector_store = Milvus(
+            embedding=embeddings,
             collection_name="sales_manuals",
             connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT}
         )
