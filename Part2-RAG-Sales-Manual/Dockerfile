@@ -11,8 +11,8 @@ COPY app.py requirements.txt /api-flask/
 RUN pip3 install pymilvus --extra-index-url https://repo.fury.io/mgiessing --prefer-binary
 RUN pip3 install -r requirements.txt
 RUN pip3 install -U langchain-community
-# Expose port 5000 for the Flask application
-EXPOSE 5000
+# Expose port 8080 for the Flask application
+EXPOSE 8080
 
 # Define the command to run the Flask application using Gunicorn
-CMD ["gunicorn", "app:app", "-b", "0.0.0.0:5000", "-w", "4"]
+CMD ["gunicorn", "app:app"]
