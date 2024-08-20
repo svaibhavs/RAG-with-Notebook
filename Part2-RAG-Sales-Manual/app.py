@@ -38,7 +38,7 @@ def index():
         text_splitter = CharacterTextSplitter(separator="\n", chunk_size=768, chunk_overlap=0)
         docs = text_splitter.split_documents(docs)
         app.logger.info('Splitting Text')
-        app.logger.info('Text split into '+str(len(docs))+'chunks')
+        app.logger.info('Text split into '+str(len(docs))+' chunks')
         
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         app.logger.info('Getting embeddings')
