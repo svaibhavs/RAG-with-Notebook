@@ -29,7 +29,7 @@ def index():
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
         vector_store = Milvus(
-            embedding_function=embeddings
+            embedding_function=embeddings,
             collection_name="sales_manuals",
             connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT}
         )
