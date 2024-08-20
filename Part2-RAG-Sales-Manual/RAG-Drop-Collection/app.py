@@ -16,7 +16,7 @@ def index():
 
     if request.args.get('Collection'):
         Collection = request.args.get('Collection')
-        app.logger.info('Found Server_Name '+Collection)
+        app.logger.info('Found Collection'+Collection)
         
         MILVUS_HOST="milvus-service"
         MILVUS_PORT="19530"
@@ -30,7 +30,7 @@ def index():
         
         content['result'] = "Success"
     else:
-        content ['result'] = "Server Name Missing"
+        content ['result'] = "Collection Name Missing"
         
     return content
 
