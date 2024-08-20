@@ -16,8 +16,5 @@ RUN pip3 install -r requirements.txt
 # Expose port 8080 for the Flask application
 EXPOSE 8080
 
-# 300 seconds = 5 minutes
-RUN echo "uwsgi_read_timeout 300s;" > /etc/nginx/conf.d/custom_timeout.conf
-
 # Define the command to run the Flask application using Gunicorn
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "__main__:app", "-w", "4"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "__main__:app", "-w", "4", "-t", "300"]
