@@ -1,4 +1,5 @@
 from pymilvus import connections, utility
+from langchain.vectorstores import Milvus
 from flask import Flask, request
 import os
 import logging
