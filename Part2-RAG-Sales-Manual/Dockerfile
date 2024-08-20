@@ -20,4 +20,4 @@ EXPOSE 8080
 RUN echo "uwsgi_read_timeout 300s;" > /etc/nginx/conf.d/custom_timeout.conf
 
 # Define the command to run the Flask application using Gunicorn
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "__main__:app", "-w", "4"]
