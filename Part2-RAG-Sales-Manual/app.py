@@ -5,8 +5,14 @@ from langchain.document_loaders import WebBaseLoader, PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from flask import Flask, request
 import os
+import logging
 
 app = Flask(__name__)
+
+if __name__ != '__main__':
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
 
 @app.route('/')
 def index():
@@ -14,38 +20,41 @@ def index():
 
     if request.args.get('Server_Name'):
         Server_Name = request.args.get('Server_Name')
-        content['result'] = "Found Server_Name"
-        content['Server_Name'] = Server_Name
+        app.logger.info('Found Server_Name '+Server_Name)
         
         MILVUS_HOST="milvus-service"
         MILVUS_PORT="19530"
 
         connections.connect(host=MILVUS_HOST, port=MILVUS_PORT)
+        app.logger.info('Connected to Milvus Host '+MILVUS_HOST)
         
         FNAME = Server_Name+".pdf"
         
         loader = PyPDFLoader(FNAME)
+        app.logger.info('Loading file '+FNAME)
         
         docs = loader.load()
         
         text_splitter = CharacterTextSplitter(separator="\n", chunk_size=768, chunk_overlap=0)
         docs = text_splitter.split_documents(docs)
-        len(docs)
+        app.logger.info('Splitting Text')
+        app.logger.info('Text split into '+len(docs)+'chunks')
         
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-        
+        app.logger.info('Getting embeddings from'+model_name)
+
+        app.logger.info('Beginning vector store')
         vector_store = Milvus.from_documents(
             docs,
             embedding=embeddings,
             collection_name="sales_manuals",
             connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT}
         )
-        
-        utility.list_collections()
+        app.logger.info('Completed vector store')
         
         content['result'] = "Success"
     else:
-        content ['result'] = "MTM Missing"
+        content ['result'] = "Server Name Missing"
         
     return content
 
