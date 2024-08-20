@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/f33/python3
+FROM registry.fedoraproject.org/f33/python3:3.11
 
 # Add application sources with correct permissions for OpenShift
 USER 0
