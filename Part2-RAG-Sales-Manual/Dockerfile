@@ -5,7 +5,7 @@ WORKDIR /api-flask
 
 # Copy the necessary files and directories into the container
 COPY app.py requirements.txt /api-flask/
-COPY ["IBM Power*.pfd", "/api-flask/"]
+COPY ["IBM Power S1024.pfd", "/api-flask/"]
 
 # Upgrade pip and install Python dependencies
 #RUN pip3 install --upgrade pip
