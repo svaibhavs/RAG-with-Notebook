@@ -17,4 +17,4 @@ RUN pip3 install -r requirements.txt
 EXPOSE 8080
 
 # Define the command to run the Flask application using Gunicorn
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "__main__:app", "-w", "4", "-t", "300"]
+CMD ["gunicorn", "--debug", "-b", "0.0.0.0:8080", "app:app", "-w", "4", "-t", "300"]
