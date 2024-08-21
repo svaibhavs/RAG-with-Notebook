@@ -1,7 +1,12 @@
 from pymilvus import connections, utility
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 import os
 import logging
+
+app = Flask(__name__)
+CORS(app) 
+
 
 app = Flask(__name__)
 
