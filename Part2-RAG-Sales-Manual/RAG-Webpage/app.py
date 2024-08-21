@@ -1,5 +1,6 @@
 ## Assisted by WCA@IBM
 ## Latest GenAI contribution: ibm/granite-20b-code-instruct-v2from flask import Flask, render_template
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
