@@ -6,17 +6,18 @@
     <title>GenAI with Sales Manuals Demo Page</title>
   </head>
   <body>
-    <h1>Introduction</h1>
+    <h1>GenAI with Sales Manuals Demo Page</h1>
+    <h2>Introduction</h2>
     <p>This is a simple Flask web page, which is built to link to the different stages of the demo David Spurway built to show GenAI using Sales Manual PDF documents, running on Red Hat OpenShift Container Platform on IBM Power.</p> 
     <p>For this, we are using the Techzone environment "OpenShift on POWER10 - Bastion, 1 Master with NFS Storage".</p>
 
-    <h1>List Collections which can be used for Retrieval Augmented Generation at this time</h1>
+    <h2>List Collections which can be used for Retrieval Augmented Generation at this time</h2>
     <button onclick="RAG-list-collections">Click to List Collections for RAG</button>
     <p id="RAG-list-collections"></p>
 
     <script>
       function myFunction() {
-        fetch("http://RAG_LIST_COLLECTIONS_SERVICE_HOST")
+        fetch("http://rag-list-collections-llm-on-techzone.apps.p1296.cecc.ihost.com")
           .then(response => response.json())
           .then(data => {
             console.log(data);
