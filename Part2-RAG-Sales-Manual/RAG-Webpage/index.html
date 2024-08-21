@@ -12,11 +12,11 @@
     <p>For this, we are using the Techzone environment "OpenShift on POWER10 - Bastion, 1 Master with NFS Storage".</p>
 
     <h2>List Collections which can be used for Retrieval Augmented Generation at this time</h2>
-    <button onclick="RAG-list-collections">Click to List Collections for RAG</button>
-    <p id="RAG-list-collections"></p>
+    <button onclick="myRAG_list_collections_func">Click to List Collections for RAG</button>
+    <p id="RAG_list_collections_id"></p>
 
     <script>
-      function RAG-list-collections {
+      function myRAG_list_collections_func {
         fetch("http://rag-list-collections-llm-on-techzone.apps.p1296.cecc.ihost.com")
           .then(response => response.json())
           .then(data => {
