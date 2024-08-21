@@ -39,7 +39,7 @@ def index():
         questions = ["How many dual-chip processor modules in the server?", "How Power10 processors in the server?", "What speed in GHz are the processors in the server?"]
         question = questions[0]
 
-        docs = vector_store.similarity_search_with_score(question, k=3, expr="source == FNAME")
+        docs = vector_store.similarity_search_with_score(question, k=3, expr="source == '"+FNAME+"'")
         app.logger.info('Got docs from vector store')
         
         content['result'] = "Success", docs
