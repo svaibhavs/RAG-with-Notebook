@@ -1,8 +1,10 @@
 ## Assisted by WCA@IBM
 ## Latest GenAI contribution: ibm/granite-20b-code-instruct-v2from flask import Flask, render_template
 from flask import Flask, render_template
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
