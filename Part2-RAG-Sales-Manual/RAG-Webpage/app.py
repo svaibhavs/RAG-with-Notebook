@@ -6,7 +6,7 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 CORS(app) 
 
-@current_app.before_request
+@app.before_request
 def basic_authentication():
     if request.method.lower() == 'options':
         return Response()
