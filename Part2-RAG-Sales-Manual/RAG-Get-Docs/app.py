@@ -41,8 +41,10 @@ def index():
 
         docs = vector_store.similarity_search_with_score(question, k=3, expr="source == '"+FNAME+"'")
         app.logger.info('Got docs from vector store')
+
+        chunks = docs[0]
         
-        content['result'] = "Success", docs
+        content['result'] = "Success", chunks
     else:
         content ['result'] = "Server Name Missing"
         
