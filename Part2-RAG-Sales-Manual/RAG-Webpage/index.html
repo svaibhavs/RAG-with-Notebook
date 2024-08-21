@@ -3,17 +3,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flask Web Page</title>
+    <title>GenAI with Sales Manuals Demo Page</title>
   </head>
   <body>
-    <h1>Flask Web Page</h1>
-    <p>This is a simple Flask web page.</p>
-    <button onclick="myFunction()">Click Me!</button>
-    <p id="demo"></p>
+    <h1>Introduction</h1>
+    <p>This is a simple Flask web page, which is built to link to the different stages of the demo David Spurway built to show GenAI using Sales Manual PDF documents, running on Red Hat OpenShift Container Platform on IBM Power.</p> 
+    <p>For this, we are using the Techzone environment "OpenShift on POWER10 - Bastion, 1 Master with NFS Storage".</p>
+
+    <h1>List Collections which can be used for Retrieval Augmented Generation at this time</h1>
+    <button onclick="RAG-list-collections">Click to List Collections for RAG</button>
+    <p id="RAG-list-collections"></p>
 
     <script>
       function myFunction() {
-        document.getElementById("demo").innerHTML = "Hello World!";
+        fetch("http://RAG_LIST_COLLECTIONS_SERVICE_HOST")
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            document.getElementById("RAG-list-collections").innerHTML = data;
+          })
+          .catch(error => {
+            console.error("Error fetching data:", error);
+          });
       }
     </script>
   </body>
