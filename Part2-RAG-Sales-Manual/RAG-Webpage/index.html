@@ -43,7 +43,7 @@
             console.log(data);
             document
               .getElementById("RAG_drop_collections_id")
-              .innerHTML(data);
+              .innerHTML = data;
           })
           .catch(error => {
             console.error("Error fetching data:", error);
