@@ -69,7 +69,8 @@
 
     <script>
       function myRAG_loader_func(Server_Name) {
-        fetch("https://rag-loader-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name, { signal: AbortSignal.timeout(50000) })
+        document.getElementById(Server_Name).innerHTML = "Loading " + Server_Name + ".pdf. This takes a few minutes.";
+        fetch("https://rag-loader-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name, { signal: AbortSignal.timeout(500000) })
           .then(response => response.json())
           .then(data => {
             console.log(data);
