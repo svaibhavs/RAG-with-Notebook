@@ -1,16 +1,28 @@
 ## Assisted by WCA@IBM
 ## Latest GenAI contribution: ibm/granite-20b-code-instruct-v2from flask import Flask, render_template
-from flask import Flask, render_template
-from flask_cors import CORS, cross_origin
+from flask import Flask, render_template, request, make_response
 
 app = Flask(__name__)
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route("/")
-@cross_origin()
+@app.route("/", methods=["POST", "OPTIONS"])
 def index():
-    return render_template('index.html')
+    if request.method == "OPTIONS": # CORS preflight
+        return _build_cors_preflight_response()
+    elif request.method == "POST":
+        return return _corsify_actual_response(render_template('index.html'))
+    else:
+        raise RuntimeError("Weird - don't know how to handle method {}".format(request.method))
+
+def _build_cors_preflight_response():
+    response = make_response()
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add('Access-Control-Allow-Headers', "*")
+    response.headers.add('Access-Control-Allow-Methods', "*")
+    return response
+
+def _corsify_actual_response(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
   
 @app.route('/healthz')
 # Added healthcheck endpoint
