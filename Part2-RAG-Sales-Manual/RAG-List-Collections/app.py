@@ -30,6 +30,8 @@ def index():
         
     content['result'] = Collections  
     
+    return content
+    
 @app.route('/healthz')
 # Added healthcheck endpoint
 def healthz():
