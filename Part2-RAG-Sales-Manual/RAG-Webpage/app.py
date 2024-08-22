@@ -1,6 +1,6 @@
 ## Assisted by WCA@IBM
 ## Latest GenAI contribution: ibm/granite-20b-code-instruct-v2from flask import Flask, render_template
-from flask import Flask, render_template, request, make_response
+from flask import Flask, render_template, request, jsonify, make_response
 
 app = Flask(__name__)
 
@@ -9,7 +9,7 @@ def index():
     if request.method == "OPTIONS": # CORS preflight
         return _build_cors_preflight_response()
     elif request.method == "GET":
-        return _corsify_actual_response(render_template('index.html'))
+        return _corsify_actual_response(jsonify(render_template('index.html')))
     else:
         raise RuntimeError("Weird - don't know how to handle method {}".format(request.method))
 
