@@ -1,7 +1,11 @@
 from pymilvus import connections, utility
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 import os
 import logging
+
+app = Flask(__name__)
+CORS(app, origins=["https://rag-webpage-llm-on-techzone.apps.p1296.cecc.ihost.com"]) 
 
 app = Flask(__name__)
 
@@ -11,6 +15,7 @@ if __name__ != '__main__':
     app.logger.setLevel(gunicorn_logger.level)
 
 @app.route('/')
+@cross_origin() # allow all origins all methods.
 def index():
     content = {}
 
