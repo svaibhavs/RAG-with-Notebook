@@ -56,5 +56,33 @@
       }
     </script>
 
+    <h2>Load pre-saved Sales Manual PDF documents into the Vector DB so the data to be used for Retrieval Augmented Generation</h2>
+    <div>
+      <button id="IBM_Power_S1012" onclick="myRAG_loader_func(IBM_Power_S1012)">Load IBM Power S1012 Sales Manual</button>
+      <button id="IBM_Power_S1014" onclick="myRAG_loader_func(IBM_Power_S1014)">Load IBM IBM Power S1014 Sales Manual</button>
+      <button id="IBM_Power_S1022" onclick="myRAG_loader_func(IBM_Power_S1022)">Load IBM IBM Power S1022 Sales Manual</button>
+      <button id="IBM_Power_S1022s" onclick="myRAG_loader_func(IBM_Power_S1022s)">Load IBM IBM Power S1022s Sales Manual</button>
+      <button id="IBM_Power_S1024" onclick="myRAG_loader_func(IBM_Power_S1024)">Load IBM IBM Power S1024 Sales Manual</button>
+    </div>
+    
+    <p id="RAG_loader_id"></p>
+
+    <script>
+      function myRAG_loader_func(Server_Name) {
+        fetch("https://rag-loader-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            document
+              .getElementById("RAG_loader_id")
+              .insertAdjacentHTML("beforeend", `<p>${JSON.stringify(data)}</p>`);
+            document.getElementById(Server_Name).innerHTML = "&#10003;";
+          })
+          .catch(error => {
+            console.error("Error fetching data:", error);
+          });
+      }
+    </script>
+    
   </body>
 </html>
