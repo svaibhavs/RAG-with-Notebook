@@ -32,12 +32,17 @@
     </script>
 
     <h2>Drop the Collections from the Vector DB, so we can load fresh data to be used for Retrieval Augmented Generation</h2>
-    <button onclick="myRAG_drop_collections_func()">Click to drop Collections for RAG</button>
+    <div>
+    <label for="collection">Collection Name:</label>
+    <input type="text" id="collection" name="collection"><br><br>
+    </div>
+    <button onclick="myRAG_drop_collections_func()">Enter a collection above then click to drop that collection</button>
     <p id="RAG_drop_collections_id"></p>
 
     <script>
       function myRAG_drop_collections_func() {
-        fetch("https://rag-drop-collection-llm-on-techzone.apps.p1296.cecc.ihost.com/")
+        var collectionName = document.getElementById("collection").value;
+        fetch("https://rag-drop-collection-llm-on-techzone.apps.p1296.cecc.ihost.com/?Collection=" + collectionName)
           .then(response => response.json())
           .then(data => {
             console.log(data);
