@@ -4,10 +4,12 @@ from langchain.vectorstores import Milvus
 from langchain.document_loaders import WebBaseLoader, PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 import os
 import logging
 
 app = Flask(__name__)
+CORS(app, origins=["https://rag-webpage-llm-on-techzone.apps.p1296.cecc.ihost.com"]) 
 
 if __name__ != '__main__':
     gunicorn_logger = logging.getLogger('gunicorn.error')
@@ -15,6 +17,7 @@ if __name__ != '__main__':
     app.logger.setLevel(gunicorn_logger.level)
 
 @app.route('/')
+@cross_origin() # allow all origins all methods.
 def index():
     content = {}
 
