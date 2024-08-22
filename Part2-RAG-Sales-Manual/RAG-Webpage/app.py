@@ -9,7 +9,7 @@ def index():
     if request.method == "OPTIONS": # CORS preflight
         return _build_cors_preflight_response()
     elif request.method == "GET":
-        return _corsify_actual_response(render_template('index.html'))
+        return render_template('index.html')
     else:
         raise RuntimeError("Weird - don't know how to handle method {}".format(request.method))
 
