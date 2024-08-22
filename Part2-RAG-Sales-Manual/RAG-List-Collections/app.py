@@ -15,6 +15,7 @@ if __name__ != '__main__':
     app.logger.setLevel(gunicorn_logger.level)
 
 @app.route('/')
+@cross_origin() # allow all origins all methods.
 def index():
     content = {}
         
