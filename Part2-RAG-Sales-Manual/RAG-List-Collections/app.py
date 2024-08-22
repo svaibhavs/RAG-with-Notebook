@@ -15,11 +15,11 @@ if __name__ != '__main__':
     app.logger.handlers = gunicorn_logger.handlers
     app.logger.setLevel(gunicorn_logger.level)
 
-@app.route('/', methods=["POST", "OPTIONS"])
+@app.route('/', methods=["GET", "OPTIONS"])
 def index():
     if request.method == "OPTIONS": # CORS preflight
         return _build_cors_preflight_response()
-    elif request.method == "POST": # The actual request following the preflight
+    elif request.method == "GET": # The actual request following the preflight
         content = {}
         
         MILVUS_HOST="milvus-service"
@@ -38,13 +38,13 @@ def index():
 
 def _build_cors_preflight_response():
     response = make_response()
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    response.headers.add('Access-Control-Allow-Headers', "*")
-    response.headers.add('Access-Control-Allow-Methods', "*")
+    response.headers.add("Access-Control-Allow-Origin", "https://rag-webpage-llm-on-techzone.apps.p1296.cecc.ihost.com")
+    response.headers.add('Access-Control-Allow-Headers', "https://rag-webpage-llm-on-techzone.apps.p1296.cecc.ihost.com")
+    response.headers.add('Access-Control-Allow-Methods', "https://rag-webpage-llm-on-techzone.apps.p1296.cecc.ihost.com")
     return response
 
 def _corsify_actual_response(response):
-    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Origin", "https://rag-webpage-llm-on-techzone.apps.p1296.cecc.ihost.com")
     return response
 
 @app.route('/healthz')
