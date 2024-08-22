@@ -7,7 +7,6 @@ import logging
 app = Flask(__name__)
 CORS(app, origins=["https://rag-webpage-llm-on-techzone.apps.p1296.cecc.ihost.com:8080"]) 
 
-
 app = Flask(__name__)
 
 if __name__ != '__main__':
