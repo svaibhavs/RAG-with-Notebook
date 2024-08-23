@@ -76,7 +76,7 @@
             console.log(data);
             document
               .getElementById("RAG_loader_id")
-              .insertAdjacentHTML("beforeend", `<p>${str(data[0])}</p>`);
+              .insertAdjacentHTML("beforeend", `<p>${JSON.stringify(data)}</p>`);
             document.getElementById(Server_Name).innerHTML = "&#10003;";
           })
           .catch(error => {
@@ -123,10 +123,7 @@
             console.log(data);
             document
               .getElementById("RAG_get_docs_id")
-              .insertAdjacentHTML("beforeend", `<p>${JSON.stringify(data[0])}</p>`);
-            document
-              .getElementById("RAG_get_docs_id")
-              .insertAdjacentHTML("beforeend", `<p>${JSON.stringify(data[1])}</p>`);
+              .insertAdjacentHTML("beforeend", `<p>${JSON.stringify(data)}</p>`);
           })
           .catch(error => {
             console.error("Error fetching data:", error);
