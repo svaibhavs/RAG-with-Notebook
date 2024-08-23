@@ -84,6 +84,51 @@
           });
       }
     </script>
+
+    <h2>Set Questions and Server Name and retrieve data from the Vector DB, so we can use is as part of our prompt for Retrieval Augmented Generation</h2>
+    <p>Pick a Server Name to ask our questions about. We can then use the metadata saved with the Sales Manual information to get chunks only from the relivant Sales Manual that was stored.</p>
+    <select id="Server_Name">
+      <option value="IBM Power S1012">IBM_Power_S1012</option>
+      <option value="IBM Power S1014">IBM_Power_S1014</option>
+      <option value="IBM Power S1022">IBM_Power_S1022</option>
+      <option value="IBM Power S1022s">IBM_Power_S1022s</option>
+      <option value="IBM Power S1024">IBM_Power_S1024</option>
+    </select>
+    
+    <div>
+    <label for="Question1">Question 1:</label>
+    <input type="text" id="Question1" name="Question1" value="How many dual-chip processor modules in the server?"><br>
+    </div>
+    <div>
+    <label for="Question2">Question 2:</label>
+    <input type="text" id="Question2" name="Question2" value="How Power10 processors in the server?"><br>
+    </div>
+    <div>
+    <label for="Question3">Question 3:</label>
+    <input type="text" id="Question3" name="Question3" value="What speed in GHz are the processors in the server?"><br>
+    </div>
+    <button onclick="myRAG_get_docs_func()">Pick a server from the list above, edit the questions if desired, then click to retrieve data to answer the questions</button>
+    <p id="RAG_drop_collections_id"></p>
+
+    <script>
+      function myRAG_get_docs_func() {
+        var Server_Name = document.getElementById("Server_Name").value;
+        var Question1 = document.getElementById("Question1").value;
+        var Question2 = document.getElementById("Question2").value;
+        var Question3 = document.getElementById("Question3").value;
+        fetch("https://rag-drop-collection-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name +"&Questions=" +Question1 +"," +Question2 +"," +Question3)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            document
+              .getElementById("Question3")
+              .insertAdjacentHTML("beforeend", `<p>${JSON.stringify(data)}</p>`);
+          })
+          .catch(error => {
+            console.error("Error fetching data:", error);
+          });
+      }
+    </script>
     
   </body>
 </html>
