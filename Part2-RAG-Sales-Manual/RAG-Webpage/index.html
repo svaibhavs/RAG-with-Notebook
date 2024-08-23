@@ -76,7 +76,7 @@
             console.log(data);
             document
               .getElementById("RAG_loader_id")
-              .insertAdjacentHTML("beforeend", `<p>${JSON.stringify(data)}</p>`);
+              .insertAdjacentHTML("beforeend", `<p>${str(data[0])}</p>`);
             document.getElementById(Server_Name).innerHTML = "&#10003;";
           })
           .catch(error => {
