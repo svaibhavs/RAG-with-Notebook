@@ -21,10 +21,9 @@
           .then(response => response.json())
           .then(data => {
             console.log(data);
-            data_obj = JSON.parse(data);
             document
               .getElementById("RAG_list_collections_id")
-              .insertAdjacentHTML("beforeend", `<p>${data_obj.result}</p>`);
+              .insertAdjacentHTML("beforeend", `<p>${str(data)}</p>`);
           })
           .catch(error => {
             console.error("Error fetching data:", error);
