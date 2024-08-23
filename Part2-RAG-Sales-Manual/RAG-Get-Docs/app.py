@@ -53,7 +53,8 @@ def index():
         content['result'] = "Success", str(docs)
     else:
         content ['result'] = "Server Name or Questions Missing"
-        
+
+    app.logger.info('Returning '+content)
     return content
 
 @app.route('/healthz')
