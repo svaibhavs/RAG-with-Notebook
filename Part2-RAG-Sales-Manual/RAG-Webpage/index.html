@@ -116,7 +116,7 @@
         var Question1 = document.getElementById("Question1").value;
         var Question2 = document.getElementById("Question2").value;
         var Question3 = document.getElementById("Question3").value;
-        fetch("https://rag-drop-collection-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name +"&Questions=" +Question1 +"," +Question2 +"," +Question3)
+        fetch("https://rag-get-docs-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name +"&Questions=" +Question1 +"," +Question2 +"," +Question3)
           .then(response => response.json())
           .then(data => {
             console.log(data);
