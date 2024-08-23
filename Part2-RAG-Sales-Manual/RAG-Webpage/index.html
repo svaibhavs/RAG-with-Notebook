@@ -109,6 +109,8 @@
     </div>
     <button onclick="myRAG_get_docs_func()">Pick a server from the list above, edit the questions if desired, then click to retrieve data to answer the questions</button><br><br>
 
+    <p id="RAG_get_docs_id"></p>
+
     <script>
       function myRAG_get_docs_func() {
         var Server_Name = document.getElementById("Server_Name").value;
@@ -120,7 +122,7 @@
           .then(data => {
             console.log(data);
             document
-              .getElementById("Question3")
+              .getElementById("RAG_get_docs_id")
               .insertAdjacentHTML("beforeend", `<p>${JSON.stringify(data)}</p>`);
           })
           .catch(error => {
