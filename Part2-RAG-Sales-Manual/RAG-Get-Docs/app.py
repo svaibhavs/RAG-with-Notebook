@@ -1,6 +1,7 @@
 from pymilvus import connections, utility
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import Milvus
+from langchain_core.load import dumps
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
 import os
@@ -51,7 +52,7 @@ def index():
         app.logger.info('Got docs from vector store')
         
         content['result'] = "Success"
-        content['docs'] = docs
+        content['docs'] = dumps(docs)
     else:
         content ['result'] = "Server Name or Questions Missing"
 
