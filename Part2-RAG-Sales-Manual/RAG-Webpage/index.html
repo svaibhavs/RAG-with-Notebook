@@ -120,7 +120,7 @@
         fetch("https://rag-get-docs-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name +"&Questions=\[\"" +Question1 +"\", \"" +Question2 +"\", \"" +Question3 +"\"\]")
           .then(response => response.json())
           .then(data => {
-            console.log(data);
+            console.log(data.result);
             document
               .getElementById("RAG_get_docs_id")
               .insertAdjacentHTML("beforeend", `<p>${data.result}</p>`);
