@@ -121,9 +121,10 @@
           .then(response => response.json())
           .then(data => {
             console.log(data.result);
+            console.log(data.docs);
             document
               .getElementById("RAG_get_docs_id")
-              .insertAdjacentHTML("beforeend", `<p>${data.result[1].Document}</p>`);
+              .insertAdjacentHTML("beforeend", `<p>${data.docs[0]}</p>`);
           })
           .catch(error => {
             console.error("Error fetching data:", error);
