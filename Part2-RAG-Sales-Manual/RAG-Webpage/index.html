@@ -125,6 +125,9 @@
             output = JSON.stringify(data.docs);
             docsdict = JSON.parse(output);
             console.log(docsdict);
+            contents = [];
+            for doc in docsdict:
+              contents.append(doc[0]['kwargs']['page_content'])
 
             document
               .getElementById("RAG_get_docs_id")
