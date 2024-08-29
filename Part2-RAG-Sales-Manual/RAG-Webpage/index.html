@@ -123,10 +123,9 @@
             console.log(data.result);
             console.log(data.docs);
             output = JSON.stringify(data.docs);
-            docsdict = JSON.parse(output);
-            console.log(docsdict);
+            console.log(output);
             contents = [];
-            for doc in docsdict:
+            for doc in output:
               contents.append(doc[0]['kwargs']['page_content'])
 
             document
