@@ -123,12 +123,8 @@
             console.log(data.result);
             console.log(data.docs);
             contents = [];
-            for doc in data.docs:
-              contents.append(doc[0]['kwargs']['page_content']);
-            console.log(contents);
-            document
-              .getElementById("RAG_get_docs_id")
-              .insertAdjacentHTML("beforeend", `<p>${contents}</p>`);
+            console.log(data.docs[0]['kwargs']['page_content']);
+
           })
           .catch(error => {
             console.error("Error fetching data:", error);
