@@ -122,7 +122,7 @@
           .then(data => {
             console.log(data.result);
             console.log(data.docs);
-            output = JSON.stringify(docs);
+            output = JSON.stringify(data.docs);
             docsdict = json.loads(output);
             console.log(docsdict);
 
