@@ -124,13 +124,10 @@
             console.log(data.docs);
             output = JSON.stringify(data.docs);
             console.log(output);
-            contents = [];
-            for doc in output:
-              contents.append(doc[0]['kwargs']['page_content'])
 
             document
               .getElementById("RAG_get_docs_id")
-              .insertAdjacentHTML("beforeend", `<p>${contents}</p>`);
+              .insertAdjacentHTML("beforeend", `<p>${output}</p>`);
           })
           .catch(error => {
             console.error("Error fetching data:", error);
