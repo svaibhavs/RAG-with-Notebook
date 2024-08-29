@@ -122,9 +122,15 @@
           .then(data => {
             console.log(data.result);
             console.log(data.docs);
-            contents = [];
-            console.log(data.docs[0]['kwargs']['page_content']);
-
+            const json = JSON.parse(data.docs);
+            // Loop through each element in the array
+            for (let i = 0; i < json.length; i++) {
+              // Get the page_content property from the current element
+              const pageContent = json[i].kwargs.page_content;
+              
+              // Print the page content
+              console.log(pageContent);
+            }
           })
           .catch(error => {
             console.error("Error fetching data:", error);
