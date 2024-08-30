@@ -176,7 +176,7 @@
       function myRAG_build_prompt_func() {
         var Prompt = document.getElementById("Prompt").value;
         var Question_for_LLM = document.getElementById("Question_for_LLM").value;
-        Prompt += "Query: " +Question_for_LLM +Chunks +"\n\nAnswer: ";
+        Prompt += "Query: " +Question_for_LLM +"\n\nAnswer: ";
         
         const element = document.getElementById("RAG_get_docs_id");
         // Get all the child elements of the element with the ID "RAG_get_docs_id"
