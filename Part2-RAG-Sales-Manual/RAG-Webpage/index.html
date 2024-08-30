@@ -160,7 +160,7 @@
       const Question_for_LLM = document.getElementById("Question_for_LLM");
 
       Server_Name.addEventListener("change", (event) => {
-        Question_for_LLM.value = "How many processor sockets can the " +event.target.value.replace("_", " ") +" have installed?";
+        Question_for_LLM.value = "How many processor sockets can the " +event.target.value.replaceAll("_", " ") +" have installed?";
       });
     </script>
 
@@ -176,7 +176,6 @@
       function myRAG_build_prompt_func() {
         var Server_Name = document.getElementById("Server_Name").value;
         var Chunks = document.getElementById("RAG_get_docs_id").value;
-        Chunks = Chunks.replace("\n", " ") + "\n\n";
         var Question_for_LLM = document.getElementById("Question_for_LLM").value;
         Question_for_LLM += "Query: " +Question_for_LLM +Chunks +"\n\nAnswer: ";
         console.log(Question_for_LLM);
