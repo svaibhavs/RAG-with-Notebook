@@ -140,7 +140,7 @@
             console.log(text);
             document
               .getElementById("RAG_get_docs_id")
-              .insertAdjacentHTML("beforeend", `<p>${text}</p>`);
+              .insertAdjacentHTML("beforeend", `<p id="RAG_chunk_contents_id">${text}</p>`);
           })
           .catch(error => {
             console.error("Error fetching data:", error);
