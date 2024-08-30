@@ -22,12 +22,12 @@ if __name__ != '__main__':
 def index():
     content = {}
 
-    if request.args.get('Server_Name','Questions'):
+    if request.args.get('Server_Name','Question'):
         Server_Name = request.args.get('Server_Name')
         app.logger.info('Found Server_Name '+Server_Name)
 
-        Questions = request.args.get('Questions')
-        app.logger.info('Found Questions '+Questions)
+        Question = request.args.get('Question')
+        app.logger.info('Found Question '+Question)
         
         MILVUS_HOST="milvus-service"
         MILVUS_PORT="19530"
@@ -45,17 +45,15 @@ def index():
 
         FNAME = Server_Name+".pdf"
 
-#        questions = ["How many dual-chip processor modules in the server?", "How Power10 processors in the server?", "What speed in GHz are the processors in the server?"]
-        question = Questions[0]
-        app.logger.info('Using this question to retrieve docs '+str(question))
+        app.logger.info('Using this question to retrieve docs: '+Question)
 
-        docs = vector_store.similarity_search_with_score(question, k=3, expr="source == '"+FNAME+"'")
+        docs = vector_store.similarity_search_with_score(Question, k=3, expr="source == '"+FNAME+"'")
         app.logger.info('Got docs from vector store')
         
         content['result'] = "Success"
         content['docs'] = dumps(docs)
     else:
-        content ['result'] = "Server Name or Questions Missing"
+        content ['result'] = "Server Name or Question Missing"
 
     app.logger.info('Returning '+str(content))
     return content
