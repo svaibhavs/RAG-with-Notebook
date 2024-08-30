@@ -160,13 +160,13 @@
       const Question_for_LLM = document.getElementById("Question_for_LLM");
 
       Server_Name.addEventListener("change", (event) => {
-        Question_for_LLM.value = "How many processor sockets can the " +event.target.value +"have installed?";
+        Question_for_LLM.value = "How many processor sockets can the " +event.target.value.replace("_", " ") +" have installed?";
       });
     </script>
 
     <div>
-    <label for="Prompt">Prompt: Instructions: Compose a single, short sentence that only answers the query, using the provided search results. If the search results do not mention anything say 'Found nothing.'</label>
-    <input type="text" id="Prompt" name="Prompt" value="Prompt: Instructions: Compose a single, short sentence that only answers the query, using the provided search results. If the search results do not mention anything say 'Found nothing.'"><br>
+    <label for="Prompt">Prompt:</label>
+    <input type="text" id="Prompt" name="Prompt" value="Instructions: Compose a single, short sentence that only answers the query, using the provided search results. If the search results do not mention anything say 'Found nothing.'"><br>
     </div>
     <button onclick="myRAG_build_prompt_func()">Edit the prompt if desired, then click to set the prompt</button><br><br>
 
