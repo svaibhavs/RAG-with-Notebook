@@ -122,14 +122,26 @@
           .then(data => {
             console.log(data.result);
             console.log(data.docs);
-            const json = JSON.parse(data.docs);
-            // Loop through each element in the array
-            for (let i = 0; i < json.length; i++) {
-              // Get the page_content property from the current element
-              const pageContent = json[i].kwargs.page_content;
-              
-              // Print the page content
-              console.log(pageContent);
+            const input = JSON.stringify(data.docs);
+            // Find all instances of "page_content"
+            const pageContentIndices = [];
+            let index = input.indexOf("\"page_content\": ");
+            while (index !== -1) {
+              pageContentIndices.push(index);
+              index = input.indexOf("\"page_content\": ", index + 1);
+            }
+            
+            // Repeat for each instance of "page_content"
+            for (const pageContentIndex of pageContentIndices) {
+              // Find the index of "type" after "page_content"
+              const typeIndex = input.indexOf(", \"type\":", pageContentIndex + "\"page_content\": ".length);
+              // Extract the text between "page_content" and "type"
+              text = "\nChunk contents:\n";
+              text += input.slice(pageContentIndex + "\"page_content\": ".length, typeIndex);
+            }
+            
+            // Print the page content
+              console.log(text);
             }
           })
           .catch(error => {
