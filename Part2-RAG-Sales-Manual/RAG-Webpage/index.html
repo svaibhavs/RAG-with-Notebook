@@ -133,15 +133,15 @@
               pageContentIndices.push(index);
               index = input_string.indexOf("page_content", index + 1);
             }
-            
+            text = "";
             // Repeat for each instance of "page_content"
             for (const pageContentIndex of pageContentIndices) {
               // Find the index of "type" after "page_content"
               const typeIndex = input_string.indexOf("type", pageContentIndex + "page_content".length);
               
               // Extract the text between "page_content" and "type"
-              text = "\nChunk contents:\n";
-              text += input_string.slice(pageContentIndex + "page_content".length, typeIndex);
+              text += "\nChunk contents:\n";
+              text += input_string.slice(pageContentIndex + "page_content".length +6, typeIndex -6);
               
               // Print the extracted text
               console.log(text);
