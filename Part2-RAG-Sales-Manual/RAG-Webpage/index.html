@@ -127,21 +127,21 @@
             
             // Find all instances of "page_content"
             const pageContentIndices = [];
-            let index = input_string.indexOf("\"page_content\": \")
+            let index = input_string.indexOf("\"page_content\": \"")
               console.log(index);
             while (index !== -1) {
               pageContentIndices.push(index);
-              index = input_string.indexOf("\"page_content\": \", index + 1);
+              index = input_string.indexOf("\"page_content\": \"", index + 1);
             }
             
             // Repeat for each instance of "page_content"
             for (const pageContentIndex of pageContentIndices) {
               // Find the index of "type" after "page_content"
-              const typeIndex = input_string.indexOf(", \"type\":", pageContentIndex + "\"page_content\": \".length);
+              const typeIndex = input_string.indexOf(", \"type\":", pageContentIndex + "\"page_content\": \"".length);
               
               // Extract the text between "page_content" and "type"
               text = "\nChunk contents:\n";
-              text += input_string.slice(pageContentIndex + "\"page_content\": \".length, typeIndex);
+              text += input_string.slice(pageContentIndex + "\"page_content\": \"".length, typeIndex);
               
               // Print the extracted text
               console.log(text);
