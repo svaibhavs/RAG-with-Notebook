@@ -147,6 +147,38 @@
           });
       }
     </script>
+
+    <h2>Build the prompt with the data retrieved and pass that to the LLM</h2>
+    <p>Edit the prompt as needed, the press the button to pass the question to the LLM, which can take a little while to come back...</p>
+    <div>
+    <label for="Question_for_LLM">Question for LLM:</label>
+    <input type="text" id="Question_for_LLM" name="Question_for_LLM" value="How many processor sockets can the " +Server_Name +"have installed?"><br>
+    </div>
+
+    <div>
+    <label for="Prompt">Prompt:</label>
+      prompt = "Instructions: Compose a single, short sentence that only answers the query, using the provided search results. ";
+      prompt += "If the search results do not mention anything say 'Found nothing.'\n\n";
+      prompt += "Search results:\n";
+    <input type="text" id="Prompt" name="Prompt" value=prompt><br>
+    </div>
+    <button onclick="myRAG_build_prompt_func()">Edit the prompt if desired, then click to set the prompt</button><br><br>
+
+    <p id="RAG_build_prompt_id"></p>
+
+    <script>
+      function myRAG_build_prompt_func() {
+        var Server_Name = document.getElementById("Server_Name").value;
+        var Chunks = document.getElementById("RAG_get_docs_id").value;
+        Chunks = Chunks.replace("\n", " ") + "\n\n";
+        var Question_for_LLM = document.getElementById("Question_for_LLM").value;
+        Question_for_LLM += "Query: " +Question_for_LLM +Chunks +"\n\nAnswer: ";
+        console.log(Question_for_LLM);
+            document
+              .getElementById("RAG_build_prompt_id")
+              .insertAdjacentHTML("beforeend", `<p>${Question_for_LLM}</p>`);
+        }
+      </script>
     
   </body>
 </html>
