@@ -177,7 +177,7 @@
         var Prompt = document.getElementById("Prompt").value;
         var Chunk_content = document.getElementById("RAG_get_docs_id").text;
         console.log(Chunk_content);
-        Promt += Chunk_content;
+        Prompt += Chunk_content;
         var Question_for_LLM = document.getElementById("Question_for_LLM").value;
         Prompt += "Query: " +Question_for_LLM +"\n\nAnswer: ";
         console.log(Prompt);
