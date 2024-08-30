@@ -152,15 +152,21 @@
     <p>Edit the prompt as needed, the press the button to pass the question to the LLM, which can take a little while to come back...</p>
     <div>
     <label for="Question_for_LLM">Question for LLM:</label>
-    <input type="text" id="Question_for_LLM" name="Question_for_LLM" value="How many processor sockets can the " +Server_Name +"have installed?"><br>
+    <input type="text" id="Question_for_LLM" name="Question_for_LLM" value="How many processor sockets can the server have installed?"><br>
     </div>
 
+    <script>
+      const Server_Name = document.getElementById("Server_Name");
+      const Question_for_LLM = document.getElementById("Question_for_LLM");
+
+      Server_Name.addEventListener("change", (event) => {
+        Question_for_LLM.value = "How many processor sockets can the " +event.target.value +"have installed?";
+      });
+    </script>
+
     <div>
-    <label for="Prompt">Prompt:</label>
-      prompt = "Instructions: Compose a single, short sentence that only answers the query, using the provided search results. ";
-      prompt += "If the search results do not mention anything say 'Found nothing.'\n\n";
-      prompt += "Search results:\n";
-    <input type="text" id="Prompt" name="Prompt" value=prompt><br>
+    <label for="Prompt">Prompt: Instructions: Compose a single, short sentence that only answers the query, using the provided search results. If the search results do not mention anything say 'Found nothing.'</label>
+    <input type="text" id="Prompt" name="Prompt" value="Prompt: Instructions: Compose a single, short sentence that only answers the query, using the provided search results. If the search results do not mention anything say 'Found nothing.'"><br>
     </div>
     <button onclick="myRAG_build_prompt_func()">Edit the prompt if desired, then click to set the prompt</button><br><br>
 
