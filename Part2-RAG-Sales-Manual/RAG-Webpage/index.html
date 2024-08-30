@@ -107,7 +107,7 @@
       function myRAG_get_docs_func() {
         var Server_Name = document.getElementById("Server_Name").value;
         var Question = document.getElementById("Question").value;
-        fetch("https://rag-get-docs-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name +"&Question=\"" +Question +"\")
+        fetch("https://rag-get-docs-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name +"&Question=\"" +Question +"\"")
           .then(response => response.json())
           .then(data => {
             console.log(data.result);
