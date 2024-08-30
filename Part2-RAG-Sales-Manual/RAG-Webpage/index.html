@@ -96,28 +96,18 @@
     </select>
     
     <div>
-    <label for="Question1">Question 1:</label>
-    <input type="text" id="Question1" name="Question1" value="How many dual-chip processor modules in the server?"><br>
+    <label for="Question">Question:</label>
+    <input type="text" id="Question" name="Question" value="How many dual-chip processor modules in the server?"><br>
     </div>
-    <div>
-    <label for="Question2">Question 2:</label>
-    <input type="text" id="Question2" name="Question2" value="How Power10 processors in the server?"><br>
-    </div>
-    <div>
-    <label for="Question3">Question 3:</label>
-    <input type="text" id="Question3" name="Question3" value="What speed in GHz are the processors in the server?"><br>
-    </div>
-    <button onclick="myRAG_get_docs_func()">Pick a server from the list above, edit the questions if desired, then click to retrieve data to answer the questions</button><br><br>
+    <button onclick="myRAG_get_docs_func()">Pick a server from the list above, edit the question if desired, then click to retrieve data to answer the question</button><br><br>
 
     <p id="RAG_get_docs_id"></p>
 
     <script>
       function myRAG_get_docs_func() {
         var Server_Name = document.getElementById("Server_Name").value;
-        var Question1 = document.getElementById("Question1").value;
-        var Question2 = document.getElementById("Question2").value;
-        var Question3 = document.getElementById("Question3").value;
-        fetch("https://rag-get-docs-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name +"&Questions=\[\"" +Question1 +"\", \"" +Question2 +"\", \"" +Question3 +"\"\]")
+        var Question = document.getElementById("Question").value;
+        fetch("https://rag-get-docs-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name +"&Question=\"" +Question +"\")
           .then(response => response.json())
           .then(data => {
             console.log(data.result);
