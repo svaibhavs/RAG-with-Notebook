@@ -181,9 +181,9 @@
       function myRAG_build_prompt_func() {
         var Prompt = document.getElementById("Prompt").value;
         console.log(chunk_contents);
-        Prompt += chunk_contents.replaceAll("<p>Chunk contents:</p>", "");;
+        Prompt += " \n\n" +chunk_contents.replaceAll("<p>Chunk contents:</p>", "");;
         var Question_for_LLM = document.getElementById("Question_for_LLM").value;
-        Prompt += "Query: " +Question_for_LLM +"\n\nAnswer: ";
+        Prompt += " \n\nQuery: \n\n" +Question_for_LLM +"\n\nAnswer: ";
         console.log(Prompt);
             document
               .getElementById("RAG_build_prompt_id")
