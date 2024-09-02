@@ -177,8 +177,8 @@
     <script>
       function myRAG_build_prompt_func(chunk_contents) {
         var Prompt = document.getElementById("Prompt").value;
-        console.log(chunk_content);
-        Prompt += chunk_content;
+        console.log(chunk_contents);
+        Prompt += chunk_contents;
         var Question_for_LLM = document.getElementById("Question_for_LLM").value;
         Prompt += "Query: " +Question_for_LLM +"\n\nAnswer: ";
         console.log(Prompt);
