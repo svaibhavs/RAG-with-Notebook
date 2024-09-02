@@ -123,24 +123,24 @@
               pageContentIndices.push(index);
               index = input_string.indexOf("page_content", index + 1);
             }
-            text = "";
+            var chunk_contents = "";
             // Repeat for each instance of "page_content"
             for (const pageContentIndex of pageContentIndices) {
               // Find the index of "type" after "page_content"
               const typeIndex = input_string.indexOf("type", pageContentIndex + "page_content".length);
               
               // Extract the text between "page_content" and "type"
-              text += "<p>Chunk contents:</p>";
-              text += input_string.slice(pageContentIndex + "page_content".length +6, typeIndex -6);
+              chunk_contents += "<p>Chunk contents:</p>";
+              chunk_contents += input_string.slice(pageContentIndex + "page_content".length +6, typeIndex -6);
               
               // Print the extracted text
-              console.log(text);
+              console.log(chunk_contents);
             }
 
-            console.log(text);
+            console.log(chunk_contents);
             document
               .getElementById("RAG_get_docs_id")
-              .insertAdjacentHTML("beforeend", `<p id="RAG_chunk_contents_id">${text}</p>`);
+              .insertAdjacentHTML("beforeend", `<p id="RAG_chunk_contents_id">${chunk_contents}</p>`);
           })
           .catch(error => {
             console.error("Error fetching data:", error);
@@ -175,9 +175,8 @@
     <script>
       function myRAG_build_prompt_func() {
         var Prompt = document.getElementById("Prompt").value;
-        var Chunk_content = document.getElementById("RAG_chunk_contents_id").textContent;
-        console.log(Chunk_content);
-        Prompt += Chunk_content;
+        console.log(chunk_content);
+        Prompt += chunk_content;
         var Question_for_LLM = document.getElementById("Question_for_LLM").value;
         Prompt += "Query: " +Question_for_LLM +"\n\nAnswer: ";
         console.log(Prompt);
