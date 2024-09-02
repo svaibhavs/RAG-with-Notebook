@@ -16,33 +16,34 @@ if __name__ != '__main__':
 @app.route('/')
 @cross_origin() # allow all origins all methods.
 def index():
-  content = {}
-
-  LLAMA_HOST="llama-service"
-  LLAMA_PORT="8080"
-  
-  if request.args.get('Prompt'):
-    Prompt = request.args.get('Prompt')
-    app.logger.info('Found Prompt '+Prompt)
+    content = {}
     
-    json_data = {
-      'prompt': Prompt,
-      'temperature': 0.1,
-      'n_predict': 100,
-      'stream': False,
-    }
-    app.logger.info('Sending request to the LLM with this JSON data: '+str(json_data))
+    LLAMA_HOST="llama-service"
+    LLAMA_PORT="8080"
     
-    res = requests.post(f'http://{LLAMA_HOST}:{LLAMA_PORT}/completion', json=json_data)
-    app.logger.info('Recieved this from the LLM: '+str(res.json()))
-      
-    content['result'] = "Success"
-    content['answer'] = res.json()['content']
-  else:
-    content ['result'] = "Prompt Missing"
-  
-  app.logger.info('Returning '+str(content.answer))
-  return content
+    if request.args.get('Prompt'):
+        Prompt = request.args.get('Prompt')
+        app.logger.info('Found Prompt '+Prompt)
+        
+        json_data = {
+            'prompt': Prompt,
+            'temperature': 0.1,
+            'n_predict': 100,
+            'stream': False,
+        }
+        app.logger.info('Sending request to the LLM with this JSON data: '+str(json_data))
+        
+        res = requests.post(f'http://{LLAMA_HOST}:{LLAMA_PORT}/completion', json=json_data)
+        app.logger.info('Recieved this from the LLM: '+str(res.json()))
+        
+        answer = res.json()['content']
+        content['result'] = "Success"
+        content['answer'] = answer
+    else:
+        content ['result'] = "Prompt Missing"
+    
+    app.logger.info('Returning '+str(content.answer))
+    return content
 
 @app.route('/healthz')
 # Added healthcheck endpoint
