@@ -197,8 +197,9 @@
     <p id="RAG_send_prompt_id"></p>
 
     <script>
-      console.log(Prompt)
-      fetch("https://rag-prompt-llm-llm-on-techzone.apps.p1296.cecc.ihost.com/?Prompt=" +Prompt)
+      function myRAG_send_prompt_func {
+        console.log(Prompt);
+        fetch("https://rag-prompt-llm-llm-on-techzone.apps.p1296.cecc.ihost.com/?Prompt=" +Prompt)
           .then(response => response.json())
           .then(data => {
             console.log(data);
