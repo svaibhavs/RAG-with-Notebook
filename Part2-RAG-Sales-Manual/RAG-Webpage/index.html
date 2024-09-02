@@ -212,7 +212,7 @@
         
         //console.log('Sending request to the LLM with this JSON data: '+str(json_data));
         
-        const url = `http://${LLAMA_HOST}:${LLAMA_PORT}/completion`;
+        const url = `https://${LLAMA_HOST}:${LLAMA_PORT}/completion`;
         fetch(url, {
           method: 'POST',
           headers: {
