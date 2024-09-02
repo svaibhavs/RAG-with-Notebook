@@ -42,7 +42,7 @@ def index():
     else:
         content ['result'] = "Prompt Missing"
     
-    app.logger.info('Returning '+str(content.answer))
+    app.logger.info('Returning '+str(content))
     return content
 
 @app.route('/healthz')
