@@ -199,7 +199,27 @@
     <script>
       function myRAG_send_prompt_func() {
         console.log(Prompt);
-        fetch("https://rag-prompt-llm-llm-on-techzone.apps.p1296.cecc.ihost.com/?Prompt=" +Prompt)
+        
+        LLAMA_HOST="llama-service";
+        LLAMA_PORT="8080";
+
+        json_data = {
+          'prompt': Prompt,
+          'temperature': 0.1,
+          'n_predict': 100,
+          'stream': False,
+        };
+        
+        console.log('Sending request to the LLM with this JSON data: '+str(json_data));
+        
+        const url = `http://${LLAMA_HOST}:${LLAMA_PORT}/completion`;
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(json_data)
+        })
           .then(response => response.json())
           .then(data => {
             console.log(data);
