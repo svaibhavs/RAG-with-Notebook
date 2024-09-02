@@ -99,12 +99,12 @@
     <label for="Question">Question:</label>
     <input type="text" id="Question" name="Question" value="How many dual-chip processor modules in the server?"><br>
     </div>
-    <button onclick="myRAG_get_docs_func()">Pick a server from the list above, edit the question if desired, then click to retrieve data to answer the question</button><br><br>
+    <button onclick="myRAG_get_docs_func(chunk_contents)">Pick a server from the list above, edit the question if desired, then click to retrieve data to answer the question</button><br><br>
 
     <p id="RAG_get_docs_id"></p>
 
     <script>
-      function myRAG_get_docs_func() {
+      function myRAG_get_docs_func(chunk_contents) {
         var Server_Name = document.getElementById("Server_Name").value;
         var Question = document.getElementById("Question").value;
         fetch("https://rag-get-docs-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name +"&Question=\"" +Question +"\"")
@@ -168,12 +168,12 @@
     <label for="Prompt">Prompt:</label>
     <input type="text" id="Prompt" name="Prompt" value="Instructions: Compose a single, short sentence that only answers the query, using the provided search results. If the search results do not mention anything say 'Found nothing.'"><br>
     </div>
-    <button onclick="myRAG_build_prompt_func()">Edit the prompt if desired, then click to set the prompt</button><br><br>
+    <button onclick="myRAG_build_prompt_func(chunk_contents)">Edit the prompt if desired, then click to set the prompt</button><br><br>
 
     <p id="RAG_build_prompt_id"></p>
 
     <script>
-      function myRAG_build_prompt_func() {
+      function myRAG_build_prompt_func(chunk_contents) {
         var Prompt = document.getElementById("Prompt").value;
         console.log(chunk_content);
         Prompt += chunk_content;
