@@ -178,8 +178,9 @@
     <p id="RAG_build_prompt_id"></p>
 
     <script>
+      var Prompt = "";
       function myRAG_build_prompt_func() {
-        var Prompt = document.getElementById("Prompt").value;
+        Prompt = document.getElementById("Prompt").value;
         console.log(chunk_contents);
         Prompt += " \n\n" +chunk_contents.replaceAll("<p>Chunk contents:</p>", "");;
         var Question_for_LLM = document.getElementById("Question_for_LLM").value;
@@ -190,6 +191,26 @@
               .insertAdjacentHTML("beforeend", `<p>${Prompt}</p>`);
         }
       </script>
-    
+
+    <button onclick="myRAG_send_prompt_func()">Send the prompt to the LLM</button><br><br>
+
+    <p id="RAG_send_prompt_id"></p>
+
+    <script>
+      console.log(Prompt)
+      fetch("https://rag-prompt-llm-llm-on-techzone.apps.p1296.cecc.ihost.com/?Prompt=" +Prompt)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            document
+              .getElementById("RAG_send_prompt_id")
+              .insertAdjacentHTML("beforeend", `<p>${data.result}</p>`);
+          })
+          .catch(error => {
+            console.error("Error fetching data:", error);
+          });
+      }
+    </script>
+
   </body>
 </html>
