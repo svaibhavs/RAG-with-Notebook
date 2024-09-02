@@ -31,10 +31,11 @@ def index():
       'n_predict': 100,
       'stream': False,
     }
-    app.logger.info('Sending requesto LLM with this JSON data: '+str(json_data))
+    app.logger.info('Sending request to the LLM with this JSON data: '+str(json_data))
     
     res = requests.post(f'http://{LLAMA_HOST}:{LLAMA_PORT}/completion', json=json_data)
-    
+    app.logger.info('Recieved this from the LLM: '+str(res.json()))
+      
     res.json()['content']
     
     content['result'] = "Success"
