@@ -36,13 +36,12 @@ def index():
     res = requests.post(f'http://{LLAMA_HOST}:{LLAMA_PORT}/completion', json=json_data)
     app.logger.info('Recieved this from the LLM: '+str(res.json()))
       
-    #res.json()['content']
-    
     content['result'] = "Success"
+    content['answer'] = res.json()['content']
   else:
     content ['result'] = "Prompt Missing"
   
-  app.logger.info('Returning '+str(content))
+  app.logger.info('Returning '+str(content.answer))
   return content
 
 @app.route('/healthz')
