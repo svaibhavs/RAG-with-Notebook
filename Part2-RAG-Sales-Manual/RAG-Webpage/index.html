@@ -171,12 +171,12 @@
     <label for="Prompt">Prompt:</label>
     <input type="text" id="Prompt" name="Prompt" value="Instructions: Compose a single, short sentence that only answers the query, using the provided search results. If the search results do not mention anything say 'Found nothing.'"><br>
     </div>
-    <button onclick="myRAG_build_prompt_func(chunk_contents)">Edit the prompt if desired, then click to set the prompt</button><br><br>
+    <button onclick="myRAG_build_prompt_func()">Edit the prompt if desired, then click to set the prompt</button><br><br>
 
     <p id="RAG_build_prompt_id"></p>
 
     <script>
-      function myRAG_build_prompt_func(chunk_contents) {
+      function myRAG_build_prompt_func() {
         var Prompt = document.getElementById("Prompt").value;
         console.log(chunk_contents);
         Prompt += chunk_contents;
