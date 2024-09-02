@@ -36,7 +36,7 @@ def index():
     res = requests.post(f'http://{LLAMA_HOST}:{LLAMA_PORT}/completion', json=json_data)
     app.logger.info('Recieved this from the LLM: '+str(res.json()))
       
-    res.json()['content']
+    #res.json()['content']
     
     content['result'] = "Success"
   else:
