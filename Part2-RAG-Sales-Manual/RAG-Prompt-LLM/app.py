@@ -24,8 +24,8 @@ def index():
     if request.method == 'POST':
         data = request.get_json()
         app.logger.info('Received data: ' +str(data))
-        #Prompt = data['Prompt']
-        #app.logger.info('Received prompt: ' + Prompt)
+        Prompt = data
+        app.logger.info('Received prompt: ' + Prompt)
         
         json_data = {
             'prompt': Prompt,
