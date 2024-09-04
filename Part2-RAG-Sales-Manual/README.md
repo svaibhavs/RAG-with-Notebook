@@ -65,5 +65,16 @@ This container is something of a workaround, as it would probably be better if m
 
 ## 6 Deploy the RAG Webpage container
 
-To pull these all together, I have build a little webpage (which looks less than ideal, but does the job for the moment!). Here, the "app.py" is very basic and does not need changing, but you will have to track down quite a few instances for hardcoded URL to change in the "index.html" file! Sorry about that! You will see I have functions that call out to the containers we just build, so we need to change the URLs in these functions:
-- 
+To pull these all together, I have build a little webpage (which looks less than ideal, but does the job for the moment!). Here, the "app.py" is very basic and does not need changing, but you will have to track down quite a few instances for hardcoded URL to change in the "index.html" file! Sorry about that! You will see I have functions that call out to the containers we just build, so we need to change the URLs (there is one in each) in these five functions:
+
+- myRAG_list_collections_func
+- myRAG_drop_collections_func
+- myRAG_loader_func
+- myRAG_get_docs_func
+- myRAG_send_prompt_func
+
+Then we can deploy, using "/Part2-RAG-Sales-Manual/RAG-Webpage" as the context directory and "rag-webpage" as the name. 
+
+You will probably end up with a level of overlap between our applications on the OCP console, so you can drag the application group to a clear space. I also then moved around my deployed containers, as the webpage is at the top and calls the rest. Purely to illistrate how things link together, I use the arrow that appears if you hover over a container to draw arrows from the "rag-webpage" to the other containers. And then from the "rag-prompt-llm" to the original "llama-cpp-server" we had before. 
+
+![image](../images/linking-containers.png)
