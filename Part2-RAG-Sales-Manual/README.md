@@ -98,3 +98,32 @@ If you click the "Click to List Collections for RAG" button (I have aimed for la
 While the existance of that collection actually should not change anything for our Sales Manual work, as we will only call on documents from given sources, you still might like to clean up and drop that collection. You may find that the "Enter a collection above then click to drop that collection" may initially not work. If you go behind the scenes and "Inspect" the webpage, you may see that the page hit a "404" error, which it is actually caused by the "ERR_CERT_AUTHORITY_INVALID" error. That comes from the same security issue we had to get passed to open the webpage. So, if you open up the URLs for our containers manually yourself once, to get passed that warning and proceed, that should sort that issue...
 
 ![image](../images/cert-auth-error.png)
+
+When it works, you should see this: 
+
+![image](../images/drop-demo-collection.png)
+
+Repressing the list collections button now does not return anything, as there are no collections in the Vector DB.
+
+So, on to adding some data! As mentioned, I am not a developer, so this next part is not really ideal. The Sales Manual for the S1012 is quite small, relative to the others, so that button might work as intended. As the button says after you have pressed it, it can take a while to load the Sales Manual into the Vector DB. The larger Sales Manual files are likely to timeout, which is unfortunate. But, we can check the logs on the actual pod in the container, and check it actually does work. On the OCP console, click on our "rag-loader" container to open it up. In "Resources" in the panel that appears, we can see the Pods (or pod, in this case!) for our container. Click on the "View logs" by the Pods to see what has actually happened.
+
+![image](../images/view-logs-rag-loader.png)
+
+In the log, as the last entry down the bottom, you should see that we did get passed the Server Name, connected to the Milvus host, loaded the file, split it into quite a few chunks, got the embeddings and completed the vector store. So, while the webpage does not look good, it does work!
+
+![image](../images/rag-loader-log-success.png)
+
+Repeat for the other Sales Manual files, checking the logs on the Pod to allow each to complete before starting the next load. It takes a bit of time, but not too bad!
+
+Now that that is done, repeating a click of the list collections button should show you we now have a new collection, "sales_manuals".
+
+We are now set to actually do some AI on our data, but we have already been using GenAI to load our data into the Vector DB, as the embedding step is using AI to work out how to label our data as it goes into the Vector DB, so we can pull it back usefully.
+
+Pick your server from the pull down list, and click the button, to bring back 3 chunks of data which may help answer our "question". 
+
+![image](../images/pick-server-for-question.png)
+
+This is quite fast, so we should be able to see the results on the webpage after only a short wait. 
+How do those chunks look? This is the data we shall include in our prompt that goes to the LLM. If desired, change the Question that is used at that retrival stage, and the chunks returned will be different. (You may need to refresh the page to clear our the old data, if desired).
+
+![image](../images/chunks-returned.png)
