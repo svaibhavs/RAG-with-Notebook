@@ -17,7 +17,7 @@
 
     <script>
       function myRAG_list_collections_func() {
-        fetch("https://rag-list-collections-llm-on-techzone.apps.p1296.cecc.ihost.com/")
+        fetch("https://rag-list-collections-llm-on-techzone.apps.p1389.cecc.ihost.com/")
           .then(response => response.json())
           .then(data => {
             console.log(data);
@@ -42,7 +42,7 @@
     <script>
       function myRAG_drop_collections_func() {
         var collectionName = document.getElementById("collection").value;
-        fetch("https://rag-drop-collection-llm-on-techzone.apps.p1296.cecc.ihost.com/?Collection=" + collectionName)
+        fetch("https://rag-drop-collection-llm-on-techzone.apps.p1389.cecc.ihost.com/?Collection=" + collectionName)
           .then(response => response.json())
           .then(data => {
             console.log(data);
@@ -70,7 +70,7 @@
     <script>
       function myRAG_loader_func(Server_Name) {
         document.getElementById(Server_Name).innerHTML = "Loading " + Server_Name + ".pdf. This takes a few minutes.";
-        fetch("https://rag-loader-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name, { signal: AbortSignal.timeout(500000) })
+        fetch("https://rag-loader-llm-on-techzone.apps.p1389.cecc.ihost.com/?Server_Name=" + Server_Name, { signal: AbortSignal.timeout(500000) })
           .then(response => response.json())
           .then(data => {
             console.log(data);
@@ -109,7 +109,7 @@
         
         var Server_Name = document.getElementById("Server_Name").value;
         var Question = document.getElementById("Question").value;
-        fetch("https://rag-get-docs-llm-on-techzone.apps.p1296.cecc.ihost.com/?Server_Name=" + Server_Name +"&Question=\"" +Question +"\"")
+        fetch("https://rag-get-docs-llm-on-techzone.apps.p1389.cecc.ihost.com/?Server_Name=" + Server_Name +"&Question=\"" +Question +"\"")
           .then(response => response.json())
           .then(data => {
             console.log(data.result);
@@ -199,7 +199,7 @@
     <script>
       function myRAG_send_prompt_func() {
         console.log(Prompt);
-        fetch("https://rag-prompt-llm-llm-on-techzone.apps.p1296.cecc.ihost.com", {
+        fetch("https://rag-prompt-llm-llm-on-techzone.apps.p1389.cecc.ihost.com", {
           method: "POST",
           timeout: 60,
           body: JSON.stringify(Prompt),
