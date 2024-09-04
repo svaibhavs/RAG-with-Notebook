@@ -78,3 +78,23 @@ Then we can deploy, using "/Part2-RAG-Sales-Manual/RAG-Webpage" as the context d
 You will probably end up with a level of overlap between our applications on the OCP console, so you can drag the application group to a clear space. I also then moved around my deployed containers, as the webpage is at the top and calls the rest. Purely to illistrate how things link together, I use the arrow that appears if you hover over a container to draw arrows from the "rag-webpage" to the other containers. And then from the "rag-prompt-llm" to the original "llama-cpp-server" we had before. 
 
 ![image](../images/linking-containers.png)
+
+## 7 Using the RAG Webpage
+
+Open up the URL for our webpage with the small icon as we did earlier with our little test
+
+![image](../images/webpage-service-url.png)
+
+The first time you do this, you hit this security warning, so click "Advanced" and then "Proceed to..." to get passed that. Trust me!
+
+![image](../images/not-private.png)
+
+That should then get to my little webpage. You may notice I left on that Watson Code Assistant was helpful to me doing this work. I am not a developer, and so Python, HTML and JavaScript are all a challenge for me. WCA was therefore useful!
+
+If you click the "Click to List Collections for RAG" button (I have aimed for labels that hopefully are clear on the buttons!), you should see "demo" returned, from the earlier work with Harry Potter. That is the Collection that container the Harry Potter book. 
+
+![image](../images/list-collections-demo.png)
+
+While the existance of that collection actually should not change anything for our Sales Manual work, as we will only call on documents from given sources, you still might like to clean up and drop that collection. You may find that the "Enter a collection above then click to drop that collection" may initially not work. If you go behind the scenes and "Inspect" the webpage, you may see that the page hit a "404" error, which it is actually caused by the "ERR_CERT_AUTHORITY_INVALID" error. That comes from the same security issue we had to get passed to open the webpage. So, if you open up the URLs for our containers manually yourself once, to get passed that warning and proceed, that should sort that issue...
+
+![image](../images/cert-auth-error.png)
