@@ -69,6 +69,8 @@ In the **Administrator** view go to:
 
 and create a Persistent Volume Claim with -> **Create PersistentVolumeClaim**
 
+![image](images/OCP-create-persistent-volume-claim.png)
+
 Go to the YAML view (**Edit YAML** link) and replace the default with
 
 
