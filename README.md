@@ -53,7 +53,9 @@ Now you're going to create several resources using the WebUI.
 
 ### 1.0 Project
 
-You will need to create a Project to hold our resources (to be added...)
+You will need to create a Project to hold our resources, so, from the Developer view, you should find yourself prompted to either select a project or create one. Click on "create a project" to make a new project to hold our work.
+
+![image](images/OCP-create-project.png)
 
 ### 1.1 Snapshot / PVC
 
