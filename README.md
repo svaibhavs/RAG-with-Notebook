@@ -67,13 +67,7 @@ In the **Administrator** view go to:
 
 **Storage** -> **PersistentVolumeClaims** 
 
-You should see an existing PVC:
-
-![image](images/1.1-pvc.png)
-
-**IF THIS IS NOT THE CASE YOU CAN CREATE THIS USING THE FOLLOWING STEP:**
-
--> **Create PersistentVolumeClaim**
+and create a Persistent Volume Claim with -> **Create PersistentVolumeClaim**
 
 Go to the YAML view (**Edit YAML** link) and replace the default with
 
