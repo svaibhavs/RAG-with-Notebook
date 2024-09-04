@@ -34,3 +34,7 @@ I put these containers into a new app, to show them grouped together. So, choose
 Change the name of this deployment to "rag-list-collections" and hit "Create". I am leaving the creation of the route as default, as that allows testing and is also used by the webpage we shall build later. I hope to move to using internal OCP routes in the future, to avoid the issue above!
 
 ![image](../images/create-rag-list-collections-1.1.png)
+
+When that container has deployed, we can hit the small icon on the top right of the container icon to open the URL and test the container is working as intended. You are likely to have to accept the security warnings, then, the collections should be listed, which would include "demo" from our ealier work if that is still in place.
+
+![image](../images/test-rag-list-collections.png)
