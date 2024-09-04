@@ -65,4 +65,5 @@ This container is something of a workaround, as it would probably be better if m
 
 ## 6 Deploy the RAG Webpage container
 
-To pull these all together, I have build a little webpage (which looks less than ideal, but does the job for the moment!). 
+To pull these all together, I have build a little webpage (which looks less than ideal, but does the job for the moment!). Here, the "app.py" is very basic and does not need changing, but you will have to track down quite a few instances for hardcoded URL to change in the "index.html" file! Sorry about that! You will see I have functions that call out to the containers we just build, so we need to change the URLs in these functions:
+- 
