@@ -127,3 +127,25 @@ This is quite fast, so we should be able to see the results on the webpage after
 How do those chunks look? This is the data we shall include in our prompt that goes to the LLM. If desired, change the Question that is used at that retrival stage, and the chunks returned will be different. (You may need to refresh the page to clear our the old data, if desired).
 
 ![image](../images/chunks-returned.png)
+
+Clicking the "Edit the prompt if desired, then click to set the prompt" does what it suggests, and builds our prompt to go to the LLM. RAG is just fancy prompting (I am using Christoffer Jensen's words there, as I now see what he means!), so we can refine what we are about to send until we are happy with it. This is prompt engineering.
+
+![image](../images/prompt-built.png)
+
+Now, for the last step, which sadly is another part that takes longer than the webpage allows. We are doing this on our Techzone environment, and one element that can have a strong impact on the performance of LLMs on IBM Power is whether you can ensure all the cores being used are on the same Power10 socket. With Techzone, we don't get that control, so we can't ensure that is the case. And we only get a limited amount of resources. So, what we are showing here is what can be done, and proving it works on IBM Power, but it is not showing the performance that can be achieved with a system you have more control over. So, don't be put off by the performance! You can check the logs to see what if happening, if you click on the "rag-prompt-llm" container, and look to the log for the pod again. 
+
+![image](../images/rag-prompt-llm-logs.png)
+
+Looking in the logs, we can see the prompt we sent, and that it is then sent off to the LLM, to see what comes back. And, at the end of the day, we do get our answer back! 
+
+![image](../images/answer-back-from-llm.png)
+
+How did it do? If the answer is not what you were after, we can go back, refine the prompt, and try again.
+
+## The Future
+
+Hopefully breaking things down like this has helped you see what happens at the different stages, and that we can do all this on IBM Power, with only a small amount of resource. I am only using a small LLM here, which impacts the accuracy of the answers, and so we can change that up in the future. And, hopefully, we can find a way to avoid the timeouts we presently hit! So, I'll keep working at this, and see what can be done. Let me know if you have comments or suggestions, as those would be most welcome! 
+
+## The Next Steps
+
+This is just a quick demo, which you can run up fast, and show to your customers. IBMers and BPs have access to Techzone, so we can reserve the needed environment, and show it to customers. Please do that! Then, we can work with IBM Client Engineering to run workshops like the Use Case Alignment workshop, to see how AI can help them. See what we can do together!
