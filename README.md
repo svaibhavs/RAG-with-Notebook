@@ -57,6 +57,10 @@ You will need to create a Project to hold our resources, so, from the Developer 
 
 ![image](images/OCP-create-project.png)
 
+Name your project "llm-on-techzone" and click "Create". The name of the project is used in the name resolution for the links we will use later, so if you use a different name, you will need to change the URL names used in the code to match.
+
+![image](images/OCP-name-project.png)
+
 ### 1.1 Snapshot / PVC
 
 In the **Administrator** view go to:
