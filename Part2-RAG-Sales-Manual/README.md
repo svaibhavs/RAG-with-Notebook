@@ -20,17 +20,17 @@ We can work with the Llama CPP Server and Milvus Servers using the connections i
 
 Use the "+Add" option from the lefthand menu to add our first container in this section, importing from Git
 
-![image](images/OCP-add-from-git.png)
+![image](../images/OCP-add-from-git.png)
 
 Point OCP at this respository, which I forked from Marvin's orginal work, so put "https://github.com/DSpurway/RAG-with-Notebook" as the URL for the Git Repo. But, don't deploy yet, as we need to go a bit deeper, and work with some of the "advanced Git options"
 
-![image](images/DIS-RAG-with-notebook.png)
+![image](../images/DIS-RAG-with-notebook.png)
 
 Click "Show advanced Git options". Put "/Part2-RAG-Sales-Manual/RAG-List-Collections" into the "Context dir", and OCP should work out you want to use a Dockerfile. 
 
-![image](images/context-dir-for-list-collections.png)
+![image](../images/context-dir-for-list-collections.png)
 
 I put these containers into a new app, to show them grouped together. So, choose "Create application" in the "Application" pull down menu, then name our app "Sales Manual RAG App". We can use that for the rest of the containers we will deploy. 
 Change the name of this deployment to "rag-list-collections" and hit "Create". I am leaving the creation of the route as default, as that allows testing and is also used by the webpage we shall build later. I hope to move to using internal OCP routes in the future, to avoid the issue above!
 
-![image](create-rag-list-collections.png)
+![image](../images/create-rag-list-collections.png)
