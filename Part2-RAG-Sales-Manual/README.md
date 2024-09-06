@@ -32,7 +32,7 @@ Click "Show advanced Git options". Put "/Part2-RAG-Sales-Manual/RAG-List-Collect
 
 ![image](../images/context-dir-for-list-collections.png)
 
-I put these containers into a new app, to show them grouped together. So, choose "Create application" in the "Application" pull down menu, then name our app "Sales Manual RAG App". We can use that for the rest of the containers we will deploy. 
+I put these containers into a new app, to show them grouped together. So, choose "Create application" in the "Application" pull down menu, then name our app "sales-manual-rag-app". We can use that for the rest of the containers we will deploy. 
 Change the name of this deployment to "rag-list-collections" and hit "Create". I am leaving the creation of the route as default, as that allows testing and is also used by the webpage we shall build later. I hope to move to using internal OCP routes in the future, to avoid the issue above!
 
 ![image](../images/create-rag-list-collections-1.1.png)
