@@ -135,6 +135,7 @@
               chunk_contents += "<p>Chunk contents:</p>";
               chunk_contents += input_string.slice(pageContentIndex + "page_content".length +6, typeIndex -6);
               chunk_contents = chunk_contents.replaceAll("\\\\u2013","");
+              chunk_contents = chunk_contents.replaceAll("\\\\u25aa","");
               chunk_contents = chunk_contents.replaceAll("\\\\n"," ");
               // chunk_contents = chunk_contents.replaceAll(/\\/g,"");
               
@@ -212,7 +213,7 @@
             console.log(data);
             document
               .getElementById("RAG_send_prompt_id")
-              .insertAdjacentHTML("beforeend", `<p>${data}</p>`);
+              .insertAdjacentHTML("beforeend", `<p>${data.result}</p><p>${data.answer}</p>`);
           })
           .catch(error => {
             console.error("Error fetching data:", error);
