@@ -213,7 +213,7 @@
             console.log(data);
             document
               .getElementById("RAG_send_prompt_id")
-              .insertAdjacentHTML("beforeend", `<p>${data.result}</p><p>${data.answer}</p>`);
+              .insertAdjacentHTML("beforeend", `<p>Result: ${data.result}</p><p>Answer: ${data.answer}</p>`);
           })
           .catch(error => {
             console.error("Error fetching data:", error);
