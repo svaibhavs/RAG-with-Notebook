@@ -11,3 +11,9 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc
 
 # Put conda in path so we can use conda activate
 ENV PATH=$CONDA_DIR/bin:$PATH
+
+RUN conda config --prepend channels rocketce
+RUN conda config --append channels conda-forge
+RUN conda install pytorch-cpu -c rocketce
+RUN conda install gfortran -c conda-forge
+RUN conda install openblas -c rocketce
