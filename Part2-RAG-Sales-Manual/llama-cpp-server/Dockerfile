@@ -4,10 +4,10 @@ RUN yum -y install gcc-toolset-13
 RUN source /opt/rh/gcc-toolset-13/enable
 
 # Install base utilities
-RUN apt-get update \
-    && apt-get install -y build-essential \
-    && apt-get install -y wget \
-    && apt-get clean \
+RUN yum update \
+    && yum install -y build-essential \
+    && yum install -y wget \
+    && yum clean \
     && rm -rf /var/lib/apt/lists/*
     
 RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc64le.sh
