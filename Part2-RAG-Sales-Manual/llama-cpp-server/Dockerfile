@@ -4,7 +4,7 @@ RUN yum -y install gcc-toolset-13
 RUN source /opt/rh/gcc-toolset-13/enable
 
 # Install base utilities
-RUN yum update \
+RUN yum -y update \
     && yum -y install -y build-essential \
     && yum -y install -y wget \
     && yum -y clean \
