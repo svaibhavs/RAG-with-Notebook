@@ -6,8 +6,8 @@ RUN source /opt/rh/gcc-toolset-13/enable
 # Install base utilities
 RUN yum -y install -y wget
     
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc64le.sh
-RUN /bin/bash Anaconda3-2023.09-0-Linux-ppc64le.sh
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc64le.sh -O ~/miniconda.sh && \
+    /bin/bash ~/miniconda.sh -b -p /opt/conda
 
 # Put conda in path so we can use conda activate
 ENV PATH=$CONDA_DIR/bin:$PATH
