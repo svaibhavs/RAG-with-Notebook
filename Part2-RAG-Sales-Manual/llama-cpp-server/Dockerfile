@@ -14,6 +14,6 @@ ENV PATH /opt/conda/bin:$PATH
 
 RUN conda config --prepend channels rocketce
 RUN conda config --append channels conda-forge
-RUN conda install pytorch-cpu -c rocketce
-RUN conda install gfortran -c conda-forge
-RUN conda install openblas -c rocketce
+RUN conda install -y pytorch-cpu -c rocketce
+RUN conda install -y gfortran -c conda-forge
+RUN conda install -y openblas -c rocketce
