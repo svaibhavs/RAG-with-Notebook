@@ -3,5 +3,15 @@ FROM registry.access.redhat.com/ubi9:9.4-1214.1726694543 AS env-build
 RUN yum -y install gcc-toolset-13 
 RUN source /opt/rh/gcc-toolset-13/enable
 
-RUN curl -L https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc64le.sh
-RUN ./Anaconda3-2023.09-0-Linux-ppc64le.sh
+# Install base utilities
+RUN apt-get update \
+    && apt-get install -y build-essential \
+    && apt-get install -y wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+    
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc64le.sh
+RUN /bin/bash Anaconda3-2023.09-0-Linux-ppc64le.sh
+
+# Put conda in path so we can use conda activate
+ENV PATH=$CONDA_DIR/bin:$PATH
