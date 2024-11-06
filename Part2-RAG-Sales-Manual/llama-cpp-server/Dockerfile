@@ -17,3 +17,11 @@ RUN conda config --append channels conda-forge
 RUN conda install -y pytorch-cpu -c rocketce
 RUN conda install -y gfortran -c conda-forge
 RUN conda install -y openblas -c rocketce
+
+RUN yum -y install git make cmake pkgconfig perf
+
+ENV PKG_CONFIG_PATH $HOME/anaconda3/lib/pkgconfig:$PKG_CONFIG_PATH
+ENV LD_LIBRARY_PATH $HOME/anaconda3/lib:$LD_LIBRARY_PATH
+RUN git clone https://github.com/ggerganov/llama.cpp
+RUN cd llama.cpp
+RUN make LLAMA_OPENBLAS=1
