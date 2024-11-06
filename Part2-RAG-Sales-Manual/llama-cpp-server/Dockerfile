@@ -15,7 +15,8 @@ RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.n
     crb enable && \
     dnf install -y epel-release && \
     dnf --enablerepo=ubi-9-appstream-rpms install -y git procps-ng vim \
-      dnf-plugins-core python3-dnf-plugin-versionlock cmake gcc-c++ \
+      dnf-plugins-core python3-dnf-plugin-versionlock cmake gcc-c++
+#     dnf-plugins-core python3-dnf-plugin-versionlock cmake gcc-c++ \
 #     python3-pip python3-argcomplete && \
 #    dnf copr enable -y slp/mesa-krunkit epel-9-$(uname -m) && \
 #    dnf install -y mesa-vulkan-drivers-23.3.3-102.el9 \
