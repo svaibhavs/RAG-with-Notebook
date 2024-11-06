@@ -20,8 +20,8 @@ RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.n
 #    dnf copr enable -y slp/mesa-krunkit epel-9-$(uname -m) && \
 #    dnf install -y mesa-vulkan-drivers-23.3.3-102.el9 \
 #      vulkan-headers vulkan-loader-devel vulkan-tools spirv-tools glslc && \
-    dnf clean all && \
-    rm -rf /var/cache/*dnf*
+#    dnf clean all && \
+#    rm -rf /var/cache/*dnf*
 
 # install build tools and clone and compile llama.cpp
 RUN dnf -y update && dnf install -y make automake gcc llvm-toolset wget
