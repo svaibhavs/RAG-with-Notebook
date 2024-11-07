@@ -10,7 +10,6 @@ RUN dnf -y install gcc-toolset-13 && \
 
 # Set LLAMA.CPP SHA for git pull
 ARG LLAMA_CPP_SHA=1329c0a75e6a7defc5c380eaf80d8e0f66d7da78
-# vulkan-headers vulkan-loader-devel vulkan-tools glslc glslang python3-pip mesa-libOpenCL-$MESA_VER.aarch64
 RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm && \
     crb enable && \
     dnf install -y epel-release && \
@@ -42,8 +41,7 @@ RUN conda config --prepend channels rocketce && \
 RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
     cd llama.cpp && \
     git reset --hard ${LLAMA_CPP_SHA} && \
-    cmake -B build -DCMAKE_INSTALL_PREFIX:PATH=/usr -DGGML_KOMPUTE=1 \
-      -DGGML_CCACHE=0 && \
+    cmake -B build -DCMAKE_INSTALL_PREFIX:PATH=/usr && \
     cmake --build build --config Release -j $(nproc) && \
     cmake --install build && \
     cd / && \
