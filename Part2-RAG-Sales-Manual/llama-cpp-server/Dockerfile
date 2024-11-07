@@ -35,14 +35,14 @@ ENV PATH /opt/conda/bin:$PATH
 RUN conda config --prepend channels rocketce && \
     conda config --append channels conda-forge && \
     conda install -y pytorch-cpu -c rocketce && \
-#    conda install -y gfortran -c conda-forge && \
-    conda install -y gfortran && \
+    conda install -y gfortran -c conda-forge && \
     conda install -y openblas -c rocketce
 
 RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
     cd llama.cpp && \
 #    git reset --hard ${LLAMA_CPP_SHA} && \
-    cmake -B build -DCMAKE_INSTALL_PREFIX:PATH=/usr && \
+#    cmake -B build -DCMAKE_INSTALL_PREFIX:PATH=/usr && \
+    cmake -B build -DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS && \
     cmake --build build --config Release -j $(nproc) && \
     cmake --install build && \
     cd / && \
