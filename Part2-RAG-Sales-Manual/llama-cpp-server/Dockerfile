@@ -40,10 +40,11 @@ RUN conda config --prepend channels rocketce && \
 
 RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
     cd llama.cpp && \
+    make LLAMA_OPENBLAS=1
 #    git reset --hard ${LLAMA_CPP_SHA} && \
 #    cmake -B build -DCMAKE_INSTALL_PREFIX:PATH=/usr && \
-    cmake -B build -DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS && \
-    cmake --build build --config Release -j $(nproc) && \
-    cmake --install build && \
-    cd / && \
-    rm -rf llama.cpp
+#    cmake -B build -LLAMA_OPENBLAS=1 && \
+#    cmake --build build --config Release -j $(nproc) && \
+#    cmake --install build && \
+#    cd / && \
+#    rm -rf llama.cpp
