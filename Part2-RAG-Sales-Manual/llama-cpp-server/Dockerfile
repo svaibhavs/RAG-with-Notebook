@@ -31,6 +31,7 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc
 
 # Put conda in path so we can use conda activate
 ENV PATH /opt/conda/bin:$PATH
+ENV LD_LIBRARY_PATH $HOME/anaconda3/lib:$LD_LIBRARY_PATH
 
 RUN conda config --prepend channels rocketce && \
     conda config --append channels conda-forge && \
