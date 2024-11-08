@@ -34,8 +34,8 @@ ENV PATH /opt/conda/bin:$PATH
 
 RUN conda config --prepend channels rocketce && \
     conda config --append channels conda-forge && \
-    conda install -y pytorch-cpu -c rocketce && \
-    conda install -y gfortran -c conda-forge && \
+    conda install -y pytorch-cpu==2.0.1 -c rocketce && \
+    conda install -y gfortran==11.2.0 -c conda-forge && \
     conda install -y openblas -c rocketce && \
     git clone --recursive https://github.com/ggerganov/llama.cpp && \
     cd llama.cpp && \
