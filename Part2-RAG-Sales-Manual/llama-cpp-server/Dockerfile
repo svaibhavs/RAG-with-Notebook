@@ -36,9 +36,8 @@ RUN conda config --prepend channels rocketce && \
     conda config --append channels conda-forge && \
     conda install -y pytorch-cpu -c rocketce && \
     conda install -y gfortran -c conda-forge && \
-    conda install -y openblas -c rocketce
-
-RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
+    conda install -y openblas -c rocketce && \
+    git clone --recursive https://github.com/ggerganov/llama.cpp && \
     cd llama.cpp && \
     make LLAMA_OPENBLAS=1
 #    git reset --hard ${LLAMA_CPP_SHA} && \
