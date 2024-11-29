@@ -31,15 +31,19 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc
 
 # Put conda in path so we can use conda activate
 ENV PATH /opt/conda/bin:$PATH
-ENV PKG_CONFIG_PATH=$HOME/anaconda3/lib/pkgconfig:$PKG_CONFIG_PATH
-ENV LD_LIBRARY_PATH $HOME/anaconda3/lib:$LD_LIBRARY_PATH
 
 RUN conda config --prepend channels rocketce && \
     conda config --append channels conda-forge && \
     conda install -y pytorch-cpu==2.0.1 -c rocketce && \
     conda install -y gfortran==11.2.0 -c conda-forge && \
-    conda install -y openblas -c rocketce && \
-    git clone --recursive https://github.com/ggerganov/llama.cpp && \
+    conda install -y openblas -c rocketce && 
+
+ENV PKG_CONFIG_PATH=$HOME/anaconda3/lib/pkgconfig:$PKG_CONFIG_PATH
+CMD ["echo", "$PKG_CONFIG_PATH"]
+ENV LD_LIBRARY_PATH $HOME/anaconda3/lib:$LD_LIBRARY_PATH
+CMD ["echo", "$LD_LIBRARY_PATH"]
+
+RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
     cd llama.cpp && \
     make LLAMA_OPENBLAS=1
 #    git reset --hard ${LLAMA_CPP_SHA} && \
