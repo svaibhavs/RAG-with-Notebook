@@ -1,6 +1,4 @@
-FROM registry.access.redhat.com/ubi9:9.4-1214.1726694543 AS env-build
-
-# WORKDIR /srv
+FROM registry.access.redhat.com/ubi9 AS builder
 
 # ARG MODEL_DOWNLOAD_URL
 # ARG MODEL_FILENAME
@@ -26,16 +24,18 @@ RUN conda config --prepend channels rocketce && \
 ENV PKG_CONFIG_PATH=/opt/conda/lib/pkgconfig:$PKG_CONFIG_PATH
 ENV LD_LIBRARY_PATH /opt/conda/lib:$LD_LIBRARY_PATH
 
-RUN echo $PATH && \
-    echo $PKG_CONFIG_PATH && \
-    echo $LD_LIBRARY_PATH && \
-    git clone --recursive https://github.com/ggerganov/llama.cpp && \
+RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
     cd llama.cpp && \
-    make LLAMA_OPENBLAS=1
-#    git reset --hard ${LLAMA_CPP_SHA} && \
-#    cmake -B build -DCMAKE_INSTALL_PREFIX:PATH=/usr && \
-#    cmake -B build -LLAMA_OPENBLAS=1 && \
-#    cmake --build build --config Release -j $(nproc) && \
-#    cmake --install build && \
-#    cd / && \
-#    rm -rf llama.cpp
+    make GGML_OPENBLAS=1
+
+CMD bash
+########################################################
+# Copying the built executable and libraries needed for the runtime on a simple ubi9 so it is a small container
+########################################################
+FROM registry.access.redhat.com/ubi9/ubi
+
+COPY --from=builder --chmod=755 /llama.cpp/build/bin/llama-server /usr/local/bin
+COPY --from=builder --chmod=644 /llama.cpp/build/src/libllama.so /llama.cpp/build/src/libllama.so
+COPY --from=builder --chmod=644 /llama.cpp/build/ggml/src/libggml.so /llama.cpp/build/ggml/src/libggml.so
+
+ENTRYPOINT [ "/usr/local/bin/llama-server", "--host", "0.0.0.0"]
