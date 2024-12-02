@@ -7,7 +7,7 @@ RUN dnf -y install gcc-toolset-13 && \
     source /opt/rh/gcc-toolset-13/enable
 
 # install build tools and clone and compile llama.cpp
-RUN dnf -y update && dnf install -y git cmake make automake gcc gcc-c++ llvm-toolset wget
+RUN dnf -y update && dnf install -y git make automake gcc gcc-c++ llvm-toolset wget
     
 RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc64le.sh -O ~/conda.sh && \
     /bin/bash ~/conda.sh -b -p /opt/conda
@@ -15,7 +15,8 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc
 # Put conda in path so we can use conda activate
 ENV PATH /opt/conda/bin:$PATH
 
-RUN conda config --prepend channels rocketce && \
+RUN conda update -n base -c defaults conda && \
+    conda config --prepend channels rocketce && \
     conda config --append channels conda-forge && \
     conda install -y pytorch-cpu==2.0.1 -c rocketce && \
     conda install -y gfortran==11.2.0 -c conda-forge && \
