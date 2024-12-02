@@ -15,7 +15,7 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc
     /bin/bash ~/conda.sh -b -p /opt/conda
 
 # Put conda in path so we can use conda activate
-ENV PATH /opt/conda/bin:/anaconda3/bin:/anaconda3/condabin:$PATH
+ENV PATH /opt/conda/bin:$PATH
 
 RUN conda config --prepend channels rocketce && \
     conda config --append channels conda-forge && \
@@ -23,8 +23,8 @@ RUN conda config --prepend channels rocketce && \
     conda install -y gfortran==11.2.0 -c conda-forge && \
     conda install -y openblas -c rocketce 
     
-ENV PKG_CONFIG_PATH=$HOME/anaconda3/lib/pkgconfig:$PKG_CONFIG_PATH
-ENV LD_LIBRARY_PATH $HOME/anaconda3/lib:$LD_LIBRARY_PATH
+ENV PKG_CONFIG_PATH=/opt/conda/lib/pkgconfig:$PKG_CONFIG_PATH
+ENV LD_LIBRARY_PATH /opt/conda/lib:$LD_LIBRARY_PATH
 
 RUN echo $PATH && \
     echo $PKG_CONFIG_PATH && \
