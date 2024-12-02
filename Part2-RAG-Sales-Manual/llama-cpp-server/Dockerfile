@@ -39,11 +39,12 @@ RUN conda config --prepend channels rocketce && \
     conda install -y openblas -c rocketce 
     
 ENV PKG_CONFIG_PATH=$HOME/anaconda3/lib/pkgconfig:$PKG_CONFIG_PATH
-RUN echo $PKG_CONFIG_PATH
 ENV LD_LIBRARY_PATH $HOME/anaconda3/lib:$LD_LIBRARY_PATH
-RUN echo $LD_LIBRARY_PATH
 
-RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
+RUN echo $PATH && \
+    echo $PKG_CONFIG_PATH && \
+    echo $LD_LIBRARY_PATH && \
+    git clone --recursive https://github.com/ggerganov/llama.cpp && \
     cd llama.cpp && \
     make LLAMA_OPENBLAS=1
 #    git reset --hard ${LLAMA_CPP_SHA} && \
