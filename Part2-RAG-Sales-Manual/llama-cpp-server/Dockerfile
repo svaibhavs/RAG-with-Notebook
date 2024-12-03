@@ -28,8 +28,8 @@ ENV LD_LIBRARY_PATH /opt/conda/lib:$LD_LIBRARY_PATH
 
 RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
     cd llama.cpp && \
-    cmake -DGGL_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS && \
-    cmake --build . --config Release
+# Using cmake breaks for me, so forcing the basic make instead
+    make LLAMA_OPENBLAS=1 LLAMA_MAKEFILE=1
     
 CMD bash
 ########################################################
