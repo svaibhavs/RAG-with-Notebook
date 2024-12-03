@@ -8,7 +8,7 @@ RUN dnf -y install gcc-toolset-13 && \
     source /opt/rh/gcc-toolset-13/enable
 
 # install build tools and clone and compile llama.cpp
-RUN dnf -y update && dnf install -y git cmake automake gcc gcc-c++ llvm-toolset wget
+RUN dnf -y update && dnf install -y git make cmake automake gcc gcc-c++ llvm-toolset wget
     
 RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-ppc64le.sh -O ~/conda.sh && \
     /bin/bash ~/conda.sh -b -p /opt/conda
