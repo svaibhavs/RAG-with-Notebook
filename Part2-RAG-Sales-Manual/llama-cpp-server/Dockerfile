@@ -33,7 +33,7 @@ RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
     
 CMD mkdir /LLMs && \
     cd /LLMs && \
-    wget https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q8_0.gguf && \
+    wget --quiet https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q8_0.gguf -O llama-2-7b-chat.Q8_0.gguf
 #   wget https://huggingface.co/TheBloke/deepseek-llm-7B-chat-GGUF/resolve/main/deepseek-llm-7b-chat.Q8_0.gguf
 
 ENTRYPOINT [ "/llama-server", "-m", "/LLMs/llama-2-7b-chat.Q8_0.gguf", "--host", "0.0.0.0"]
