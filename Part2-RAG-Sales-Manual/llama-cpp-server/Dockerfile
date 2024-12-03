@@ -31,14 +31,9 @@ RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
 # Using cmake breaks for me, so forcing the basic make instead
     make LLAMA_OPENBLAS=1 LLAMA_MAKEFILE=1
     
-CMD bash
-########################################################
-# Copying the built executable and libraries needed for the runtime on a simple ubi9 so it is a small container
-########################################################
-#FROM registry.access.redhat.com/ubi9/ubi
+CMD mkdir /LLMs && \
+    cd /LLMs && \
+    wget https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q8_0.gguf && \
+#   wget https://huggingface.co/TheBloke/deepseek-llm-7B-chat-GGUF/resolve/main/deepseek-llm-7b-chat.Q8_0.gguf
 
-#COPY --from=builder --chmod=755 /llama.cpp/build/bin/llama-server /usr/local/bin
-#COPY --from=builder --chmod=644 /llama.cpp/build/src/libllama.so /llama.cpp/build/src/libllama.so
-#COPY --from=builder --chmod=644 /llama.cpp/build/ggml/src/libggml.so /llama.cpp/build/ggml/src/libggml.so
-
-#ENTRYPOINT [ "/usr/local/bin/llama-server", "--host", "0.0.0.0"]
+ENTRYPOINT [ "/llama-server", "-m", "/LLMs/llama-2-7b-chat.Q8_0.gguf", "--host", "0.0.0.0"]
