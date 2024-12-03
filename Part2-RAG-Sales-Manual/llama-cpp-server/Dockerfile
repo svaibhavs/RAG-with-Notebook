@@ -1,4 +1,5 @@
-FROM registry.access.redhat.com/ubi9 AS builder
+# FROM registry.access.redhat.com/ubi9 AS builder
+FROM registry.access.redhat.com/ubi9
 
 # ARG MODEL_DOWNLOAD_URL
 # ARG MODEL_FILENAME
@@ -33,10 +34,10 @@ CMD bash
 ########################################################
 # Copying the built executable and libraries needed for the runtime on a simple ubi9 so it is a small container
 ########################################################
-FROM registry.access.redhat.com/ubi9/ubi
+#FROM registry.access.redhat.com/ubi9/ubi
 
-COPY --from=builder --chmod=755 /llama.cpp/build/bin/llama-server /usr/local/bin
-COPY --from=builder --chmod=644 /llama.cpp/build/src/libllama.so /llama.cpp/build/src/libllama.so
-COPY --from=builder --chmod=644 /llama.cpp/build/ggml/src/libggml.so /llama.cpp/build/ggml/src/libggml.so
+#COPY --from=builder --chmod=755 /llama.cpp/build/bin/llama-server /usr/local/bin
+#COPY --from=builder --chmod=644 /llama.cpp/build/src/libllama.so /llama.cpp/build/src/libllama.so
+#COPY --from=builder --chmod=644 /llama.cpp/build/ggml/src/libggml.so /llama.cpp/build/ggml/src/libggml.so
 
-ENTRYPOINT [ "/usr/local/bin/llama-server", "--host", "0.0.0.0"]
+#ENTRYPOINT [ "/usr/local/bin/llama-server", "--host", "0.0.0.0"]
