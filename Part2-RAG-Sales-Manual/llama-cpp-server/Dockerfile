@@ -30,7 +30,7 @@ RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
     cd llama.cpp && \
 # Using cmake breaks for me, so forcing the basic make instead
     make LLAMA_OPENBLAS=1 LLAMA_MAKEFILE=1 && \
-    wget --quiet https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q8_0.gguf -O models/llama-2-7b-chat.Q8_0.gguf
+    wget --quiet https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q8_0.gguf -O ./models/llama-2-7b-chat.Q8_0.gguf
 #   wget https://huggingface.co/TheBloke/deepseek-llm-7B-chat-GGUF/resolve/main/deepseek-llm-7b-chat.Q8_0.gguf
 
 ENTRYPOINT ["/llama.cpp/llama-server", "-m", "/llama.cpp/models/llama-2-7b-chat.Q8_0.gguf", "--host", "0.0.0.0"]
