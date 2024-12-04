@@ -32,9 +32,9 @@ RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
     cd llama.cpp && \
 # Using cmake breaks for me, so forcing the basic make instead
     make LLAMA_OPENBLAS=1 LLAMA_MAKEFILE=1 && \
-    wget --quiet https://huggingface.co/bartowski/granite-3.0-2b-instruct-GGUF/resolve/main/granite-3.0-2b-instruct-Q5_K_M.gguf -O ./models/granite-3.0-2b-instruct-Q5_K_M.gguf
-    wget --quiet https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q8_0.gguf -O ./models/tinyllama-1.1b-chat-v1.0.Q8_0.gguf
+    wget --quiet https://huggingface.co/bartowski/granite-3.0-8b-instruct-GGUF/resolve/main/granite-3.0-8b-instruct-Q4_K_M.gguf -O ./models/granite-3.0-8b-instruct-Q4_K_M.gguf
+#   wget --quiet https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q8_0.gguf -O ./models/tinyllama-1.1b-chat-v1.0.Q8_0.gguf
 #   wget --quiet https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q8_0.gguf -O ./models/llama-2-7b-chat.Q8_0.gguf
 #   wget --quiet https://huggingface.co/TheBloke/deepseek-llm-7B-chat-GGUF/resolve/main/deepseek-llm-7b-chat.Q8_0.gguf -O ./models/deepseek-llm-7b-chat.Q8_0.gguf
 
-ENTRYPOINT ["/llama.cpp/llama-server", "-m", "/llama.cpp/models/granite-3.0-2b-instruct-Q5_K_M.gguf", "-c", "4096", "-b", "32", "-t", "16", "--host", "0.0.0.0"]
+ENTRYPOINT ["/llama.cpp/llama-server", "-m", "/llama.cpp/models/granite-3.0-8b-instruct-Q4_K_M.gguf", "--prio", "3", "-c", "4096","-b", "32", "-t", "40", "-n", "-1", "--host", "0.0.0.0"]
