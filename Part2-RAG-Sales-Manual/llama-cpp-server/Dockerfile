@@ -1,9 +1,6 @@
 # FROM registry.access.redhat.com/ubi9 AS builder
 FROM registry.access.redhat.com/ubi9
 
-# ARG MODEL_DOWNLOAD_URL
-# ARG MODEL_FILENAME
-
 RUN dnf -y install gcc-toolset-13 && \
     source /opt/rh/gcc-toolset-13/enable
 
@@ -19,9 +16,7 @@ ENV PATH /opt/conda/bin:$PATH
 RUN conda update -n base -c defaults conda && \
     conda config --prepend channels rocketce && \
     conda config --append channels conda-forge && \
-#    conda install -y pytorch-cpu==2.0.1 -c rocketce && \
     conda install -y pytorch-cpu -c rocketce && \
-#    conda install -y gfortran==11.2.0 -c conda-forge && \
     conda install -y gfortran -c conda-forge && \
     conda install -y openblas -c rocketce 
     
