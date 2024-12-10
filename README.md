@@ -247,37 +247,6 @@ Feel free to experiment with the model parameters like temperature and predictio
 
 In the second part you'll see that smaller, resource-efficient models like this can answer questions based on a given context and instructions quite well! That will demonstrate that huge models aren't always required!
 
-### _Option B: Using CLI_
-
-
-**_IF YOU DEPLOYED THE MODEL SERVER USING OPTION A YOU CAN SKIP THIS PART AND DIRECTLY GO TO Part 2!_**
-
-_There is also a short version to do all of this in just a few steps using the CLI:_
-
-_You will need your OpenShift login token which you can get after logging in to the WebUI, click on your username -> Copy login command -> Login again with your credentials -> Display token_
-
-
-_Open the terminal and login to your cluster using the token
-`oc login --token=<YOUR TOKEN> --server=https://api.cadiz.edu.ihost.com:6443`_
-
-```bash
-# Get the lab repository
-git clone https://github.com/mgiessing/bcn-lab-2084 && cd bcn-lab-2084
-
-cd Part1-Deploy-LLM
-
-# Apply the resources
-oc apply -f .
-
-# Watch until pod is up and running
-oc get pods -w
-
-#Get the URL by:
-oc get routes llama-service -o jsonpath='{.spec.host}'
-```
-
-_Get the URL and open in the browser._
-
 ## Part 2: Enhance with RAG using Milvus & LangChain
 
 In the second part you will create a vector database (Milvus) that you'll be using for indexing a sample PDF file.
@@ -289,9 +258,7 @@ You can stay in the same OpenShift project.
 You will need your OpenShift login token which you can get after logging in to the WebUI, **click on your username** -> **Copy login command** -> **Login again with your credentials** -> **Display token**
 
 
-Open the terminal (command prompt or PowerShell) and login to your cluster using:
-
-`oc login --token=<YOUR TOKEN> --server=https://api.cadiz.edu.ihost.com:6443`
+Open the terminal (command prompt or PowerShell) and login to your cluster using the token you just copied.
 
 Clone the repository using Github Desktop or use the terminal:
 
