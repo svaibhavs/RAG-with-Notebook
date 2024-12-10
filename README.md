@@ -262,9 +262,10 @@ Open the terminal (command prompt or PowerShell) and login to your cluster using
 
 Clone the repository using Github Desktop or use the terminal:
 
-```bash
-# Get the lab repository
+```
 git clone https://github.com/mgiessing/bcn-lab-2084
+```
+```
 cd bcn-lab-2084
 ```
 
