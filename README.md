@@ -1,6 +1,6 @@
 # Hands-on Lab: Deploy a Large Language Model on Power10
 
-In this lab you'll use a pretrained Large Language Model and deploy it on OpenShift. It will make use of the unique Power10 features such as the Vector Scalar Extension (VSX) as well as the newly introduced Matrix Math Accelerator (MMA) units. 
+In this lab you'll use a pretrained Large Language Model and deploy it on OpenShift. It will make use of the unique Power10 features such as the Vector Scalar Extension (VSX) as well as the newly introduced Matrix-Multiply Assist (MMA) units (also often called Matrix Math Accelerator, but I think the former is the correct techical name!). 
 
 The first part of the lab will focus on the following steps:
 - Create a persistent volume to store the model
@@ -15,9 +15,9 @@ The second part of the lab will focus on these topics:
 - Create a prompt based on the previous answer and pass to the LLM
 
 ## 0 Setup
-Unlike the original, I am changing this to work with the "OpenShift on POWER10 - Bastion, 1 Master with NFS Storage" environment which IBMers and IBM Business Partners can reserve from Techzone. 
+Unlike the original, I am changing this to work with the "Retrieval Augmented Generation (RAG) on Power10" environment which IBMers and IBM Business Partners can reserve from Techzone. This is based on the "OpenShift on POWER10 - Bastion, 1 Master with NFS Storage", which is what I originally used, and the instructions should work on either environment. 
 
-Only IBMers and IBM Business Partners can access Techzone, so the link won't work for anyone else. For IBMers and BPs, access the collection on Techzone here: https://techzone.ibm.com/collection/on-premises-redhat-openshift-on-power-and-ibm-z-offerings/journey-ocp-on-power-with-nfs-storage
+Only IBMers and IBM Business Partners can access Techzone, so the link won't work for anyone else. For IBMers and BPs, access the collection on Techzone here: [https://techzone.ibm.com/collection/retrieval-augmented-generation-rag-on-power10](https://techzone.ibm.com/collection/retrieval-augmented-generation-rag-on-power10)
 
 You will need to reserve the environment, and wait for the deployment to complete and the environment to be ready.
 
