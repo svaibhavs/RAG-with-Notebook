@@ -21,7 +21,7 @@ Only IBMers and IBM Business Partners can access Techzone, so the link won't wor
 
 You will need to reserve the environment, and wait for the deployment to complete and the environment to be ready.
 
-![image](images/OCP-on-Power10.png)
+![image](images/RAG-on-Power10.png)
 
 When the environment has been provisioned and is ready, click the "here" link to access the details you will need:
 
