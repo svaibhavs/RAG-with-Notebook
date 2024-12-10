@@ -273,11 +273,14 @@ Now you're going to create the milvus deployment:
 
 ```
 cd Part2-RAG/milvus-deployment
-
+```
+```
 oc create configmap milvus-config --from-file=./config/milvus.yaml
-
+```
+```
 oc apply -f .
-
+```
+```
 cd ..
 ```
 
@@ -295,7 +298,8 @@ To interact with Milvus and your Large Language Model you're using a Notebookser
 
 ```bash
 cd nb-deployment
-
+```
+```
 oc apply -f .
 ```
 
