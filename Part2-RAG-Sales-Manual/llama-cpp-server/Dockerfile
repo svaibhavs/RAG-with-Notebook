@@ -32,4 +32,4 @@ RUN git clone --recursive https://github.com/ggerganov/llama.cpp && \
 #   wget --quiet https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q8_0.gguf -O ./models/llama-2-7b-chat.Q8_0.gguf
 #   wget --quiet https://huggingface.co/TheBloke/deepseek-llm-7B-chat-GGUF/resolve/main/deepseek-llm-7b-chat.Q8_0.gguf -O ./models/deepseek-llm-7b-chat.Q8_0.gguf
 
-ENTRYPOINT ["/llama.cpp/llama-server", "-m", "/llama.cpp/models/granite-3.0-8b-instruct-Q4_K_M.gguf", "--prio", "3", "-c", "4096","-b", "32", "-t", "40", "-n", "-1", "--host", "0.0.0.0"]
+ENTRYPOINT ["/llama.cpp/llama-server", "-m", "/llama.cpp/models/granite-3.0-8b-instruct-Q4_K_M.gguf", "--prio", "3", "-c", "4096","-b", "32", "-t", "40", "-n", "-1", "--mlock", "--host", "0.0.0.0"]
