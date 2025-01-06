@@ -36,22 +36,8 @@ def index():
     LLAMA_HOST="llama-service"
     LLAMA_PORT="8080"
 
-#    llm = LlamaCpp(
-#        temperature=0,
-#        model_id= "ibm/granite-3-8b-instruct", 
-#        params={
-#            GenParams.DECODING_METHOD: "greedy",
-#            GenParams.TEMPERATURE: 0,
-#            GenParams.MIN_NEW_TOKENS: 5,
-#            GenParams.MAX_NEW_TOKENS: 250,
-#            GenParams.STOP_SEQUENCES: ["Human:", "Observation"],
-#        },
-#    )
-
     template = "Answer the {query} accurately. If you do not know the answer, simply say you do not know."
     prompt = PromptTemplate.from_template(template)
-
-#    agent = prompt | llm
 
     json_data = {
         'prompt': prompt,
@@ -68,7 +54,9 @@ def index():
     answer = res.json()['content']
     content['result'] = "Success"
     content['answer'] = answer
-  
+    
+    agent = prompt | res
+    
     if request.args.get('Query'):
         Query = request.args.get('Query')
 
