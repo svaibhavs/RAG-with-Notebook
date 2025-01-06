@@ -18,6 +18,7 @@ from flask import Flask, request
 from flask_cors import CORS, cross_origin
 import os
 import logging
+import requests
 
 app = Flask(__name__)
 CORS(app, origins=["https://rag-webpage-llm-on-techzone.apps.cyan.pssc.mop.fr.ibm.com"]) 
@@ -31,23 +32,42 @@ if __name__ != '__main__':
 @cross_origin() # allow all origins all methods.
 def index():
     content = {}
+    
+    LLAMA_HOST="llama-service"
+    LLAMA_PORT="8080"
 
-    llm = LlamaCpp(
-        temperature=0,
-        model_id= "ibm/granite-3-8b-instruct", 
-        params={
-            GenParams.DECODING_METHOD: "greedy",
-            GenParams.TEMPERATURE: 0,
-            GenParams.MIN_NEW_TOKENS: 5,
-            GenParams.MAX_NEW_TOKENS: 250,
-            GenParams.STOP_SEQUENCES: ["Human:", "Observation"],
-        },
-    )
+#    llm = LlamaCpp(
+#        temperature=0,
+#        model_id= "ibm/granite-3-8b-instruct", 
+#        params={
+#            GenParams.DECODING_METHOD: "greedy",
+#            GenParams.TEMPERATURE: 0,
+#            GenParams.MIN_NEW_TOKENS: 5,
+#            GenParams.MAX_NEW_TOKENS: 250,
+#            GenParams.STOP_SEQUENCES: ["Human:", "Observation"],
+#        },
+#    )
 
     template = "Answer the {query} accurately. If you do not know the answer, simply say you do not know."
     prompt = PromptTemplate.from_template(template)
 
-    agent = prompt | llm
+#    agent = prompt | llm
+
+    json_data = {
+        'prompt': prompt,
+        'temperature': 0,
+        'n_predict': 100,
+        'stream': False,
+    }
+    
+    app.logger.info('Sending request to the LLM with this JSON data: '+str(json_data))
+        
+    res = requests.post(f'http://{LLAMA_HOST}:{LLAMA_PORT}/completion', json=json_data, timeout=600)
+    app.logger.info('Recieved this from the LLM: '+str(res.json()))
+        
+    answer = res.json()['content']
+    content['result'] = "Success"
+    content['answer'] = answer
   
     if request.args.get('Query'):
         Query = request.args.get('Query')
