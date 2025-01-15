@@ -2,10 +2,9 @@ FROM registry.access.redhat.com/ubi8/python-311
 
 # Upgrade pip and install Python dependencies
 RUN pip3 install --upgrade pip
-RUN pip3 install transformers llama-cpp-python --extra-index-url https://repo.fury.io/mgiessing --prefer-binary
+RUN pip3 install torch torchvision transformers llama-cpp-python --extra-index-url https://repo.fury.io/mgiessing --prefer-binary
 RUN pip3 install -U langchain
 RUN pip3 install -U langchain-community
-RUN pip3 install -U torch torchvision
 RUN pip3 install -U python-dotenv
 RUN pip3 install -U jupyter
 
