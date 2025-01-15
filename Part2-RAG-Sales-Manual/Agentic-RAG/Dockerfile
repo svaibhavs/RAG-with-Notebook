@@ -10,4 +10,4 @@ RUN pip3 install -U jupyter
 RUN mkdir -p /tmp/notebooks && chmod -R a+rwx /tmp/notebooks
 WORKDIR /tmp/notebooks
 
-CMD ["jupyter", "notebook", "--notebook-dir=/tmp/notebooks", "--no-browser", "--ip=0.0.0.0", "--allow-root", "--port=8888", "--NotebookApp.token=''", "--NotebookApp.allow_origin='*'"]
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--notebook-dir=/tmp/notebooks", "--NotebookApp.token=''", "--NotebookApp.allow_origin='*'"]
