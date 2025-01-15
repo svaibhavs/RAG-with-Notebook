@@ -7,10 +7,7 @@ RUN pip3 install -U langchain
 RUN pip3 install -U langchain-community
 RUN pip3 install -U jupyter
 
-RUN MAMBA_DOCKERFILE_ACTIVATE=1 /usr/local/bin/_dockerfile_shell.sh chgrp -R 0 /home/mambauser && chmod -R g=u /home/mambauser # buildkit
-USER mambauser
-ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/conda/bin:/opt/conda/bin/
-RUN MAMBA_DOCKERFILE_ACTIVATE=1 /usr/local/bin/_dockerfile_shell.sh mkdir -p /tmp/notebooks && chmod -R a+rwx /tmp/notebooks # buildkit
+RUN mkdir -p /tmp/notebooks && chmod -R a+rwx /tmp/notebooks
 WORKDIR /tmp/notebooks
 
 ENTRYPOINT ["sh" "-c" "jupyter lab --notebook-dir=/tmp/notebooks --no-browser --ip=0.0.0.0 --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.allow_origin='*'"]
