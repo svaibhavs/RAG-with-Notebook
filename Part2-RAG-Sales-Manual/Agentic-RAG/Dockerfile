@@ -4,7 +4,7 @@ FROM registry.access.redhat.com/ubi8/python-311
 WORKDIR /app
 
 # Copy the necessary files and directories into the container
-COPY app.py requirements.txt /app/
+#COPY app.py /app/
 
 # Upgrade pip and install Python dependencies
 RUN pip3 install --upgrade pip
@@ -12,7 +12,6 @@ RUN pip3 install pymilvus sentence-transformers llama-cpp-python --extra-index-u
 RUN pip3 install -U langchain
 RUN pip3 install -U langchain-community
 RUN pip3 install -U jupyter
-RUN pip3 install -r requirements.txt
 
 # Expose port 8888 for the notebook application
 EXPOSE 8888
