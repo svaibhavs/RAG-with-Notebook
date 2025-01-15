@@ -3,6 +3,8 @@ FROM registry.access.redhat.com/ubi8/python-311
 # Set the working directory within the container
 WORKDIR /app
 
+RUN chmod +w /
+
 # Copy the necessary files and directories into the container
 #COPY app.py /app/
 
